@@ -1,11 +1,15 @@
 #pragma once
 #include <string>
 
-// 所有接口类的共同基类
+// Common base for plugin interfaces
+namespace core {
+
 struct IObject {
     virtual ~IObject() = default;
 };
 
-// 为接口定义唯一ID字符串
+} // namespace core
+
+// Macro to define a simple IID getter for interface types
 #define DEFINE_IID(name) \
     static const char* IID() { return #name; }

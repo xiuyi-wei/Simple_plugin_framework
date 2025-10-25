@@ -1,21 +1,24 @@
-#include "core/IObject.hpp"
-#include <string>
+#include <iostream>
+#include <memory>
+#include "core/ISimple.hpp"
+#include "core/PluginManager.hpp"
 
 using namespace core;
 
-class SimplePlugin : public IObject {
+class CSimple : public ISimple {
 public:
-    SimplePlugin() = default;
-    ~SimplePlugin() override = default;
-    std::string name() const override { return "SimplePlugin"; }
+    CSimple() = default;
+    ~CSimple() override = default;
+    int add(int a, int b) override {
+        std::cout << "[CSimple] add(" << a << ", " << b << ")" << std::endl;
+        return a + b;
+    }
 };
 
-// C-style factory so the host can create an instance when loading the library.
-extern "C" IObject* create_plugin() {
-    return new SimplePlugin();
-}
-
-// Optional destroy function
-extern "C" void destroy_plugin(IObject* p) {
-    delete p;
+// 插件导出注册函数，宿主会在加载后调用 registerPlugin
+extern "C" void registerPlugin(PluginManager& m) {
+    m.registerClass("clsidSimple", []() -> std::shared_ptr<IObject> {
+        return std::make_shared<CSimple>();
+    });
+    std::cout << "[SimplePlugin] registered CSimple" << std::endl;
 }
