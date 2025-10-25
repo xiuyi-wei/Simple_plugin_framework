@@ -1,0 +1,40 @@
+@startuml
+' Top-level packages
+package "plugin_framework" {
+  package core {
+    class IObject
+    class ISimple
+    class PluginManager
+  }
+
+  package app {
+    class main
+  }
+
+  package plugins {
+    package simple {
+      class SimplePlugin
+      note right: exports registerPlugin(PluginManager&)
+    }
+  }
+}
+
+' Relationships
+app::main --> core::PluginManager : uses
+plugins::simple::SimplePlugin ..> core::ISimple : implements
+plugins::simple::SimplePlugin ..> core::IObject : inherits
+plugins::simple::SimplePlugin --> core::PluginManager : registerPlugin(PluginManager&)
+core::PluginManager --> plugins::simple::SimplePlugin : loads (dlopen/LoadLibrary)
+core::PluginManager ..> core::IObject : stores factory -> std::shared_ptr<IObject>
+core::PluginManager ..> core::ISimple : returns via create("clsidSimple")
+
+' Sequence (simplified)
+== Sequence ==
+main -> PluginManager : loadPlugin(".../simple.dll")
+PluginManager -> OS : LoadLibrary / dlopen
+OS -> PluginLibrary : calls registerPlugin symbol
+PluginLibrary -> PluginManager : registerClass("clsidSimple", factory)
+main -> PluginManager : create("clsidSimple")
+PluginManager -> factory : create shared_ptr<IObject>
+main -> ISimple : dynamic_cast and call add(a,b)
+@enduml

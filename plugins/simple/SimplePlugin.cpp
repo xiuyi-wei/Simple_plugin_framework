@@ -15,10 +15,18 @@ public:
     }
 };
 
-// 插件导出注册函数，宿主会在加载后调用 registerPlugin
-extern "C" void registerPlugin(PluginManager& m) {
-    m.registerClass("clsidSimple", []() -> std::shared_ptr<IObject> {
-        return std::make_shared<CSimple>();
+#if defined(_WIN32)
+  #define PLUGIN_EXPORT extern "C" __declspec(dllexport)
+#else
+  #define PLUGIN_EXPORT extern "C"
+#endif
+
+// ★ PluginManager 期望的符号名：registerPlugin
+//   具体签名请以你的 PluginManager::loadPlugin() 里 GetProcAddress 的声明为准：
+//   常见两种：void registerPlugin(core::PluginManager&)
+//            或   void registerPlugin(core::PluginManager*)
+PLUGIN_EXPORT void registerPlugin(core::PluginManager& pm) {
+    pm.registerClass("clsidSimple", [](){
+        return std::shared_ptr<core::IObject>(new CSimple());
     });
-    std::cout << "[SimplePlugin] registered CSimple" << std::endl;
 }

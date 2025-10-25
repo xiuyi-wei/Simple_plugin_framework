@@ -5,4 +5,7 @@ rm -rf build
 # Configure the project
 cmake . -B build
 # Build the project
-cmake --build build -j$(nproc)
+cmake --build build -j
+
+cp ./Debug/app.exe ./app.exe
+# cp ./build/bin/Debug/simple.dll ./plugins/

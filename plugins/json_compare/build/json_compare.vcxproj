@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{208207F3-C0F3-3244-90C7-A4942E88F121}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>json_compare</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\plugins\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">json_compare.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">json_compare</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\plugins\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">json_compare.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">json_compare</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\plugins\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">json_compare.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">json_compare</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\plugins\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">json_compare.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">json_compare</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\include;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;CMAKE_INTDIR="Debug";json_compare_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\";json_compare_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\include;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\include;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+D:\3D_Measure\CMake\bin\cmake.exe -E make_directory G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/plugins
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/build/lib/Debug/json_compare.lib</ImportLibrary>
+      <ProgramDataBaseFile>G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/plugins/Debug/json_compare.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\include;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release";json_compare_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\";json_compare_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\include;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\include;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+D:\3D_Measure\CMake\bin\cmake.exe -E make_directory G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/plugins
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/build/lib/Release/json_compare.lib</ImportLibrary>
+      <ProgramDataBaseFile>G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/plugins/Release/json_compare.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\include;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel";json_compare_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";json_compare_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\include;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\include;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+D:\3D_Measure\CMake\bin\cmake.exe -E make_directory G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/plugins
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/build/lib/MinSizeRel/json_compare.lib</ImportLibrary>
+      <ProgramDataBaseFile>G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/plugins/MinSizeRel/json_compare.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\include;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo";json_compare_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\";json_compare_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\include;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\include;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+D:\3D_Measure\CMake\bin\cmake.exe -E make_directory G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/plugins
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/build/lib/RelWithDebInfo/json_compare.lib</ImportLibrary>
+      <ProgramDataBaseFile>G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/plugins/RelWithDebInfo/json_compare.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+D:\3D_Measure\CMake\bin\cmake.exe -SG:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare -BG:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/build --check-stamp-file G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeRCInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\MSVC.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\build\CMakeFiles\3.29.0-rc4\CMakeCXXCompiler.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\build\CMakeFiles\3.29.0-rc4\CMakeRCCompiler.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\build\CMakeFiles\3.29.0-rc4\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+D:\3D_Measure\CMake\bin\cmake.exe -SG:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare -BG:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/build --check-stamp-file G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeRCInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\MSVC.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\build\CMakeFiles\3.29.0-rc4\CMakeCXXCompiler.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\build\CMakeFiles\3.29.0-rc4\CMakeRCCompiler.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\build\CMakeFiles\3.29.0-rc4\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+D:\3D_Measure\CMake\bin\cmake.exe -SG:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare -BG:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/build --check-stamp-file G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeRCInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\MSVC.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\build\CMakeFiles\3.29.0-rc4\CMakeCXXCompiler.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\build\CMakeFiles\3.29.0-rc4\CMakeRCCompiler.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\build\CMakeFiles\3.29.0-rc4\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+D:\3D_Measure\CMake\bin\cmake.exe -SG:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare -BG:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/build --check-stamp-file G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeRCInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\MSVC.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\build\CMakeFiles\3.29.0-rc4\CMakeCXXCompiler.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\build\CMakeFiles\3.29.0-rc4\CMakeRCCompiler.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\build\CMakeFiles\3.29.0-rc4\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\JsonComparator.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\build\ZERO_CHECK.vcxproj">
+      <Project>{1A1563DB-FBE6-3FD9-9CD8-D8E7920AF23E}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

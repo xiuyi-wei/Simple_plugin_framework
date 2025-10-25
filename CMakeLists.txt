@@ -1,25 +1,26 @@
 cmake_minimum_required(VERSION 3.10)
 project(SimplePluginFramework LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Add plugin subdirectory
-add_subdirectory(plugins/simple)
-
-# Application
+# 只编 app（不再 add_subdirectory plugins/*）
 add_executable(app src/app/main.cpp)
 target_include_directories(app PRIVATE ${CMAKE_SOURCE_DIR}/include)
 
-# Put the app binary and plugins into predictable folders under the build tree
+# MSVC 用 UTF-8，避免 C4819
+if (MSVC)
+  target_compile_options(app PRIVATE /utf-8)
+endif()
+
+# 可执行文件放到“项目根”，并让 VS 调试时以项目根为工作目录
 set_target_properties(app PROPERTIES
-	RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin/$<CONFIG>"
-	LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin/$<CONFIG>"
-	ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin/$<CONFIG>"
+  RUNTIME_OUTPUT_DIRECTORY          "${PROJECT_SOURCE_DIR}"
+  VS_DEBUGGER_WORKING_DIRECTORY     "${PROJECT_SOURCE_DIR}"
 )
 
-
-# On Unix we need to link to dl for dynamic loading; on Windows it's not needed.
-if(UNIX)
-	target_link_libraries(app PRIVATE dl)
+# 仅 Linux 需要 -ldl；macOS 不需要
+if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  target_link_libraries(app PRIVATE dl)
 endif()

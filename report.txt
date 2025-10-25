@@ -1,0 +1,12 @@
+对照报告（左=ours，右=golden；叶子行尾显示 √/×/E）
+说明：√=相同，×=同类型但值不同，E=结构/类型/缺失错误
+
+{
+  "age": 25 // golden: 26 ×
+  "name": "Alice" // golden: "Alice" √
+  "skills": [
+    "C++" // golden: "C++" √
+    "Python" // golden: "Rust" ×
+  ]
+  "extra": <missing> // golden: true E
+}

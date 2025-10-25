@@ -1,0 +1,21 @@
+# CMake generation dependency list for this directory.
+D:/3D_Measure/CMake/share/cmake-3.29/Modules/CMakeCXXInformation.cmake
+D:/3D_Measure/CMake/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake
+D:/3D_Measure/CMake/share/cmake-3.29/Modules/CMakeGenericSystem.cmake
+D:/3D_Measure/CMake/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake
+D:/3D_Measure/CMake/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake
+D:/3D_Measure/CMake/share/cmake-3.29/Modules/CMakeRCInformation.cmake
+D:/3D_Measure/CMake/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake
+D:/3D_Measure/CMake/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake
+D:/3D_Measure/CMake/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+D:/3D_Measure/CMake/share/cmake-3.29/Modules/Compiler/MSVC-CXX.cmake
+D:/3D_Measure/CMake/share/cmake-3.29/Modules/Compiler/MSVC.cmake
+D:/3D_Measure/CMake/share/cmake-3.29/Modules/Platform/Windows-Initialize.cmake
+D:/3D_Measure/CMake/share/cmake-3.29/Modules/Platform/Windows-MSVC-CXX.cmake
+D:/3D_Measure/CMake/share/cmake-3.29/Modules/Platform/Windows-MSVC.cmake
+D:/3D_Measure/CMake/share/cmake-3.29/Modules/Platform/Windows.cmake
+D:/3D_Measure/CMake/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake
+G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/CMakeLists.txt
+G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/build/CMakeFiles/3.29.0-rc4/CMakeCXXCompiler.cmake
+G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/build/CMakeFiles/3.29.0-rc4/CMakeRCCompiler.cmake
+G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/build/CMakeFiles/3.29.0-rc4/CMakeSystem.cmake

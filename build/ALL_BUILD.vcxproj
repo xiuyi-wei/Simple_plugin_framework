@@ -177,10 +177,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{56AC7ED8-49C4-3AEB-A6E2-E6D6F2B86E13}</Project>
       <Name>app</Name>
     </ProjectReference>
-    <ProjectReference Include="G:\HKAVISION\Porject\Simple_plugin_framework\build\plugins\simple\simple.vcxproj">
-      <Project>{671C8233-383E-3339-912C-A5E6C6F0CB83}</Project>
-      <Name>simple</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

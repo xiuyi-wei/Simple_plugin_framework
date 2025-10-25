@@ -1,0 +1,5 @@
+# 头文件库（INTERFACE）：把 <repo_root>/include 加到使用者的 include 路径
+add_library(nlohmann_json_vendored INTERFACE)
+target_include_directories(nlohmann_json_vendored INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)
