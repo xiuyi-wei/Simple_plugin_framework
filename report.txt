@@ -1,12 +1,56 @@
-对照报告（左=ours，右=golden；叶子行尾显示 √/×/E）
-说明：√=相同，×=同类型但值不同，E=结构/类型/缺失错误
+对照报告（左=ours，右=golden；对象按插入顺序，叶子尾注 √/×/E）
+说明：√=相同，×=同类型值不同，E=结构/类型/缺失错误
 
 {
-  "age": 25 // golden: 26 ×
-  "name": "Alice" // golden: "Alice" √
-  "skills": [
-    "C++" // golden: "C++" √
-    "Python" // golden: "Rust" ×
-  ]
-  "extra": <missing> // golden: true E
+  "workflow": {
+    "name": "Engine System Monitor Pipeline" // golden: "Engine System Monitor Pipeline" √
+    "version": "1.0.0" // golden: "1.0.0" √
+    "description": "引擎系统资源监控与性能分析模块化工作流" // golden: "" ×
+  }
+  "system_resource_monitor": {
+    "description": "系统资源监控模块，实时采集 CPU、内存、显存、帧率等指标" // golden: "系统资源监控模块，实时采集 CPU、内存、显存、帧率等指标" √
+    "inputs": {
+      "target_process": "engine_app" // golden: "1" ×
+      "interval_sec": 1 // golden: 1 √
+      "duration_sec": 300 // golden: 300 √
+    }
+    "metrics": [
+      {
+        "name": "cpu_usage_percent" // golden: "2" ×
+        "valid": true // golden: true √
+        "description": "引擎进程的 CPU 利用率 (%)" // golden: "3 CPU 利用率 (%)" ×
+        "scripts": "monitor_cpu_usage.sh" // golden: "monitor_cpu_usage.sh" √
+        "outputs": "./data/performance/cpu_usage.csv" // golden: "./data/performance/cpu_usage.csv" √
+      }
+      {
+        "name": "memory_usage_kb" // golden: "memory_usage_kb" √
+        "valid": true // golden: true √
+        "description": "引擎进程占用的系统内存 (KB)" // golden: "引擎进程占用的系统内存 (KB)" √
+        "scripts": "monitor_memory_usage.sh" // golden: "monitor_memory_usage.sh" √
+        "outputs": "./data/performance/mem_usage.csv" // golden: "./data/performance/mem_usage.csv" √
+      }
+      {
+        "name": "gpu_memory_kb" // golden: "4" ×
+        "valid": false // golden: false √
+        "description": "显存占用 (KB)，若系统无 GPU 可关闭" // golden: "显存占用 (KB)，若系统无 GPU 可关闭" √
+        "scripts": "monitor_gpu_memory.sh" // golden: "monitor_gpu_memory.sh" √
+        "outputs": "./data/performance/gpu_mem_usage.csv" // golden: "./data/performance/gpu_mem_usage.csv" √
+      }
+      {
+        "name": "fps" // golden: "fps" √
+        "valid": false // golden: false √
+        "description": "引擎实时帧率 (frames per second)" // golden: "引擎实时帧率 (frames per second)" √
+        "scripts": "monitor_fps.sh" // golden: "monitor_fps.sh" √
+        "outputs": "./data/performance/fps.csv" // golden: "./data/performance/fps.csv" √
+      }
+    ]
+    "outputs": {
+      "csv_file": "./data/performance/*.csv" // golden: "./data/performance/*.csv" √
+      "plot_file": "./data/performance/*.png" // golden: "./data/performance/*.png" √
+    }
+  }
+  "report": {
+    "combine_script": "" // golden: "" √
+    "final_archive": "" // golden: "" √
+  }
 }

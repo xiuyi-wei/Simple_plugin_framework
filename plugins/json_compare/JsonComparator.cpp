@@ -6,16 +6,15 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include <set>
 #include <algorithm>
 #include <sstream>
 #include <memory>
 
-using json = nlohmann::json;
+using json = nlohmann::ordered_json;  // ★ 保持对象键的插入顺序
 
 namespace {
 
-// 工具函数（与原程序一致）
+// 工具函数
 static std::string indent(int n){ return std::string(n, ' '); }
 
 static void print_value(std::ostream& os, const json& v){
@@ -38,7 +37,7 @@ static const char* sym(Status s){
     }
 }
 
-// 递归比较并以“左为主”输出报告
+// 递归比较并以“左为主”输出报告（对象按插入顺序遍历）
 static void dump_compare(const json& L, const json& R, std::ostream& os, int pad, const std::string& key="") {
     const bool hasKey = !key.empty();
 
@@ -48,18 +47,18 @@ static void dump_compare(const json& L, const json& R, std::ostream& os, int pad
             os << indent(pad) << (hasKey? ("\""+key+"\": ") : "") << "{ // TYPE_MISMATCH golden: "
                << R.type_name() << " " << sym(Status::ERR) << "\n";
 
-            std::set<std::string> keysL, keysR;
-            for (auto& [k,_] : L.items()) keysL.insert(k);
-            for (auto& [k,_] : R.items()) keysR.insert(k);
-
-            for (auto& k : keysL){
+            // 先按 L 的插入顺序打印（右侧缺失则标记）
+            for (auto it = L.begin(); it != L.end(); ++it){
+                const std::string& k = it.key();
                 const json* r = R.contains(k) ? &R.at(k) : nullptr;
-                dump_compare(L.at(k), r? *r : json(), os, pad+2, k);
+                dump_compare(it.value(), r? *r : json(), os, pad+2, k);
             }
-            for (auto& k : keysR){
+            // 再补 R 独有键（按 R 的插入顺序）
+            for (auto it = R.begin(); it != R.end(); ++it){
+                const std::string& k = it.key();
                 if (!L.contains(k)){
                     os << indent(pad+2) << "\"" << k << "\": <missing> // golden: "
-                       << R.at(k).dump() << " " << sym(Status::ERR) << "\n";
+                       << it.value().dump() << " " << sym(Status::ERR) << "\n";
                 }
             }
             os << indent(pad) << "}\n";
@@ -102,8 +101,8 @@ static void dump_compare(const json& L, const json& R, std::ostream& os, int pad
         if (st==Status::ERR) os << " // LEN " << L.size() << " vs " << R.size() << " " << sym(st);
         os << "\n";
 
+        // size_t n = std::max(L.size(), R.size());
         size_t n = L.size() > R.size() ? L.size() : R.size();
-
         for (size_t i=0;i<n;++i){
             const json* l = (i<L.size()? &L[i] : nullptr);
             const json* r = (i<R.size()? &R[i] : nullptr);
@@ -126,23 +125,23 @@ static void dump_compare(const json& L, const json& R, std::ostream& os, int pad
         if (hasKey) os << "\"" << key << "\": ";
         os << "{\n";
 
-        std::set<std::string> keysL, keysR;
-        for (auto& [k,_] : L.items()) keysL.insert(k);
-        for (auto& [k,_] : R.items()) keysR.insert(k);
-
-        for (auto& k : keysL){
+        // 先按 L 的插入顺序
+        for (auto it = L.begin(); it != L.end(); ++it){
+            const std::string& k = it.key();
             const json* r = R.contains(k) ? &R.at(k) : nullptr;
-            if (r) dump_compare(L.at(k), *r, os, pad+2, k);
+            if (r) dump_compare(it.value(), *r, os, pad+2, k);
             else{
                 os << indent(pad+2) << "\"" << k << "\": ";
-                print_value(os, L.at(k));
+                print_value(os, it.value());
                 os << " // golden: <missing> " << sym(Status::ERR) << "\n";
             }
         }
-        for (auto& k : keysR){
+        // 再补 R 独有键（按 R 的插入顺序）
+        for (auto it = R.begin(); it != R.end(); ++it){
+            const std::string& k = it.key();
             if (!L.contains(k)){
                 os << indent(pad+2) << "\"" << k << "\": <missing> // golden: "
-                   << R.at(k).dump() << " " << sym(Status::ERR) << "\n";
+                   << it.value().dump() << " " << sym(Status::ERR) << "\n";
             }
         }
 
@@ -155,7 +154,7 @@ static void dump_compare(const json& L, const json& R, std::ostream& os, int pad
 
 namespace core {
 
-// 插件实现：把原 main() 中的逻辑包进接口方法
+// 插件实现：把对比能力挂到 IComparator
 class JsonComparator : public IComparator {
 public:
     bool compareFiles(const std::string& oursPath,
@@ -181,8 +180,8 @@ public:
             return false;
         }
 
-        ofs << "对照报告（左=ours，右=golden；叶子行尾显示 √/×/E）\n";
-        ofs << "说明：√=相同，×=同类型但值不同，E=结构/类型/缺失错误\n\n";
+        ofs << "对照报告（左=ours，右=golden；对象按插入顺序，叶子尾注 √/×/E）\n";
+        ofs << "说明：√=相同，×=同类型值不同，E=结构/类型/缺失错误\n\n";
         dump_compare(L, R, ofs, 0);
 
         return true;

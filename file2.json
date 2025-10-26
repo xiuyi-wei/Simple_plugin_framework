@@ -1,9 +1,55 @@
 {
-  "age": 26,
-  "extra": true,
-  "name": "Alice",
-  "skills": [
-    "C++",
-    "Rust"
-  ]
+  "workflow": {
+    "name": "Engine System Monitor Pipeline",
+    "version": "1.0.0",
+    "description": ""
+  },
+
+    "system_resource_monitor": {
+    "description": "系统资源监控模块，实时采集 CPU、内存、显存、帧率等指标",
+    "inputs": {
+        "target_process": "1",
+        "interval_sec": 1,
+        "duration_sec": 300
+    },
+    "metrics": [
+        {
+        "name": "2",
+        "valid": true,
+        "description": "3 CPU 利用率 (%)",
+        "scripts":"monitor_cpu_usage.sh",
+        "outputs":"./data/performance/cpu_usage.csv"
+        },
+        {
+        "name": "memory_usage_kb",
+        "valid": true,
+        "description": "引擎进程占用的系统内存 (KB)",
+        "scripts":"monitor_memory_usage.sh",
+        "outputs":"./data/performance/mem_usage.csv"
+        },
+        {
+        "name": "4",
+        "valid": false,
+        "description": "显存占用 (KB)，若系统无 GPU 可关闭",
+        "scripts":"monitor_gpu_memory.sh",
+        "outputs":"./data/performance/gpu_mem_usage.csv"
+        },
+        {
+        "name": "fps",
+        "valid": false,
+        "description": "引擎实时帧率 (frames per second)",
+        "scripts":"monitor_fps.sh",
+        "outputs":"./data/performance/fps.csv"
+        }
+    ],
+    "outputs": {
+        "csv_file": "./data/performance/*.csv",
+        "plot_file": "./data/performance/*.png"
+    }
+  },
+
+  "report": {
+    "combine_script": "",
+    "final_archive": ""
+  }
 }
