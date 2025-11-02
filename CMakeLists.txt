@@ -6,8 +6,16 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # 只编 app（不再 add_subdirectory plugins/*）
-add_executable(app src/app/main.cpp)
-target_include_directories(app PRIVATE ${CMAKE_SOURCE_DIR}/include)
+add_executable(app
+  src/app/main.cpp
+  src/config/ConfigParser.cpp
+  src/ui/console_ui.cpp
+)
+
+target_include_directories(app PRIVATE
+  ${CMAKE_SOURCE_DIR}/include
+  ${CMAKE_SOURCE_DIR}/include/ui
+)
 
 # MSVC 用 UTF-8，避免 C4819
 if (MSVC)

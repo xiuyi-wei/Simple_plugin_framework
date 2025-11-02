@@ -4,6 +4,12 @@
     <ClCompile Include="G:\HKAVISION\Porject\Simple_plugin_framework\src\app\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="G:\HKAVISION\Porject\Simple_plugin_framework\src\config\ConfigParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\HKAVISION\Porject\Simple_plugin_framework\src\ui\console_ui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="G:\HKAVISION\Porject\Simple_plugin_framework\CMakeLists.txt" />
