@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "G:/HKAVISION/Porject/Simple_plugin_framework/build/_deps/googletest-subbuild/CMakeFiles/googletest-populate"
+		},
+		{
+			"file" : "G:/HKAVISION/Porject/Simple_plugin_framework/build/_deps/googletest-subbuild/CMakeFiles/17eab3ebbd87d6e5f42e71491eb32d3f/googletest-populate.rule"
+		},
+		{
+			"file" : "G:/HKAVISION/Porject/Simple_plugin_framework/build/_deps/googletest-subbuild/CMakeFiles/d6efef40640a91570b1c3593fbd07dc8/googletest-populate-complete.rule"
+		},
+		{
+			"file" : "G:/HKAVISION/Porject/Simple_plugin_framework/build/_deps/googletest-subbuild/CMakeFiles/6bfa967500c34864def49be25882fdf1/googletest-populate-build.rule"
+		},
+		{
+			"file" : "G:/HKAVISION/Porject/Simple_plugin_framework/build/_deps/googletest-subbuild/CMakeFiles/6bfa967500c34864def49be25882fdf1/googletest-populate-configure.rule"
+		},
+		{
+			"file" : "G:/HKAVISION/Porject/Simple_plugin_framework/build/_deps/googletest-subbuild/CMakeFiles/6bfa967500c34864def49be25882fdf1/googletest-populate-download.rule"
+		},
+		{
+			"file" : "G:/HKAVISION/Porject/Simple_plugin_framework/build/_deps/googletest-subbuild/CMakeFiles/6bfa967500c34864def49be25882fdf1/googletest-populate-install.rule"
+		},
+		{
+			"file" : "G:/HKAVISION/Porject/Simple_plugin_framework/build/_deps/googletest-subbuild/CMakeFiles/6bfa967500c34864def49be25882fdf1/googletest-populate-mkdir.rule"
+		},
+		{
+			"file" : "G:/HKAVISION/Porject/Simple_plugin_framework/build/_deps/googletest-subbuild/CMakeFiles/6bfa967500c34864def49be25882fdf1/googletest-populate-patch.rule"
+		},
+		{
+			"file" : "G:/HKAVISION/Porject/Simple_plugin_framework/build/_deps/googletest-subbuild/CMakeFiles/6bfa967500c34864def49be25882fdf1/googletest-populate-test.rule"
+		},
+		{
+			"file" : "G:/HKAVISION/Porject/Simple_plugin_framework/build/_deps/googletest-subbuild/CMakeFiles/6bfa967500c34864def49be25882fdf1/googletest-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"googletest-populate"
+		],
+		"name" : "googletest-populate"
+	}
+}

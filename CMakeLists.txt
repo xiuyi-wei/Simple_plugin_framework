@@ -14,7 +14,6 @@ add_executable(app
 
 target_include_directories(app PRIVATE
   ${CMAKE_SOURCE_DIR}/include
-  ${CMAKE_SOURCE_DIR}/include/ui
 )
 
 # MSVC 用 UTF-8，避免 C4819

@@ -1,4 +1,6 @@
-#pragma once
+#ifndef CONSOLE_UI_HPP
+#define CONSOLE_UI_HPP
+
 #include <string>
 #include <vector>
 
@@ -32,3 +34,5 @@ void markTaskDoneAndPrint(Task& t);
 void markTaskInProgressAndPrint(Task& t);
 
 } // namespace ui
+
+#endif // CONSOLE_UI_HPP

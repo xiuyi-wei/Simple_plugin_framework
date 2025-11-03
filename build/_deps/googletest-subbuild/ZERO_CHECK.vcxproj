@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveNugetPackages>false</ResolveNugetPackages>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{848CD8DA-CB9F-327D-B57E-476D3CB40090}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>ZERO_CHECK</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="G:\HKAVISION\Porject\Simple_plugin_framework\build\_deps\googletest-subbuild\CMakeFiles\17eab3ebbd87d6e5f42e71491eb32d3f\generate.stamp.rule">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Checking Build System</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+D:\3D_Measure\CMake\bin\cmake.exe -SG:/HKAVISION/Porject/Simple_plugin_framework/build/_deps/googletest-subbuild -BG:/HKAVISION/Porject/Simple_plugin_framework/build/_deps/googletest-subbuild --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file G:/HKAVISION/Porject/Simple_plugin_framework/build/_deps/googletest-subbuild/googletest-populate.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\ExternalProject.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\ExternalProject\PatchInfo.txt.in;D:\3D_Measure\CMake\share\cmake-3.29\Modules\ExternalProject\RepositoryInfo.txt.in;D:\3D_Measure\CMake\share\cmake-3.29\Modules\ExternalProject\UpdateInfo.txt.in;D:\3D_Measure\CMake\share\cmake-3.29\Modules\ExternalProject\cfgcmd.txt.in;D:\3D_Measure\CMake\share\cmake-3.29\Modules\ExternalProject\gitclone.cmake.in;D:\3D_Measure\CMake\share\cmake-3.29\Modules\ExternalProject\gitupdate.cmake.in;D:\3D_Measure\CMake\share\cmake-3.29\Modules\ExternalProject\mkdirs.cmake.in;D:\3D_Measure\CMake\share\cmake-3.29\Modules\ExternalProject\shared_internal_commands.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\build\_deps\googletest-subbuild\CMakeFiles\3.29.0-rc4\CMakeSystem.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\build\_deps\googletest-subbuild\CMakeLists.txt;G:\HKAVISION\Porject\Simple_plugin_framework\build\_deps\googletest-subbuild\googletest-populate-prefix\tmp\googletest-populate-mkdirs.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\build\_deps\googletest-subbuild\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
