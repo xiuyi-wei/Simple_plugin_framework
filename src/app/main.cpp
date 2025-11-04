@@ -8,6 +8,17 @@
 #  include <windows.h>
 #endif
 #include "ui/console_ui.hpp"
+#include "workflow/Workflow.hpp"
+#include "workflow/Executor.hpp"
+#include "workflow/WorkflowParser.hpp"
+#include "runtime/EventBus.hpp"
+#include "runtime/ThreadPool.hpp"
+#include "runtime/Services.hpp"
+#include "workflow/Workflow.hpp"
+#include "workflow/Executor.hpp"
+#include "runtime/EventBus.hpp"
+#include "runtime/ThreadPool.hpp"
+#include "runtime/Services.hpp"
 #include <thread>
 #include <chrono>
 
@@ -75,6 +86,95 @@ int main() {
     auto comp = std::dynamic_pointer_cast<core::IComparator>(obj);
     if (comp) {
         comp->compareFiles("file1.json","file2.json","report.txt");
+    }
+
+    // If configuration workflow.json exists, run it
+    try {
+        rt::LocalFS fs; rt::StdLogger logger; rt::SteadyClock clock;
+        if (fs.exists("workflow.json")) {
+            auto spec = wf::parseWorkflowJson("workflow.json");
+            rt::EventBus bus; rt::ThreadPool pool(3); wf::SimpleContext ctx(logger, clock, fs);
+            bus.subscribe([&](const rt::Event& e){
+                if (e.type == "task_started")  std::cout << "[CFG] start: " << e.id << "\n";
+                if (e.type == "task_finished") std::cout << "[CFG] done:  " << e.id << " ok=" << (e.success?"true":"false") << "\n";
+            });
+            wf::Executor exec(bus, pool);
+            bool ok = exec.run(spec, ctx);
+            std::cout << "Config flow result ok: " << (ok?"true":"false");
+            if (!spec.final_key.empty()) std::cout << ", final=" << ctx.get(spec.final_key);
+            std::cout << std::endl;
+        }
+    } catch (const std::exception& e) {
+        std::cerr << "workflow.json error: " << e.what() << std::endl;
+    }
+
+    // --- Taskflow demo: compute 1*(2+1)+3 ---
+    {
+        struct ConstTask : public wf::ITask {
+            std::string name, key, value;
+            ConstTask(std::string id, std::string k, std::string v)
+                : name(std::move(id)), key(std::move(k)), value(std::move(v)) {}
+            std::string id() const override { return name; }
+            wf::TaskResult run(wf::ITaskContext& ctx) override {
+                ctx.set(key, value); return {true, {}};
+            }
+        };
+        struct AddTask : public wf::ITask {
+            std::string name, a, b, out;
+            AddTask(std::string id, std::string ak, std::string bk, std::string ok)
+                : name(std::move(id)), a(std::move(ak)), b(std::move(bk)), out(std::move(ok)) {}
+            std::string id() const override { return name; }
+            wf::TaskResult run(wf::ITaskContext& ctx) override {
+                try {
+                    int ai = std::stoi(ctx.get(a));
+                    int bi = std::stoi(ctx.get(b));
+                    ctx.set(out, std::to_string(ai + bi));
+                    return {true, {}};
+                } catch(...) { return {false, "AddTask parse error"}; }
+            }
+        };
+        struct MulTask : public wf::ITask {
+            std::string name, a, b, out;
+            MulTask(std::string id, std::string ak, std::string bk, std::string ok)
+                : name(std::move(id)), a(std::move(ak)), b(std::move(bk)), out(std::move(ok)) {}
+            std::string id() const override { return name; }
+            wf::TaskResult run(wf::ITaskContext& ctx) override {
+                try {
+                    int ai = std::stoi(ctx.get(a));
+                    int bi = std::stoi(ctx.get(b));
+                    ctx.set(out, std::to_string(ai * bi));
+                    return {true, {}};
+                } catch(...) { return {false, "MulTask parse error"}; }
+            }
+        };
+
+        wf::WorkflowSpec f;
+        // Nodes
+        f.tasks.push_back(std::make_shared<ConstTask>("const1", "k1", "1"));
+        f.tasks.push_back(std::make_shared<ConstTask>("const2", "k2", "2"));
+        f.tasks.push_back(std::make_shared<ConstTask>("const3", "k3", "3"));
+        f.tasks.push_back(std::make_shared<AddTask>("add", "k2", "k1", "sum"));        // sum = 2 + 1
+        f.tasks.push_back(std::make_shared<MulTask>("mul", "k1", "sum", "prod"));        // prod = 1 * sum
+        f.tasks.push_back(std::make_shared<AddTask>("plus3", "prod", "k3", "final"));   // final = prod + 3
+        // Edges
+        f.edges.push_back({"const2", "add"});
+        f.edges.push_back({"const1", "add"});
+        f.edges.push_back({"const1", "mul"});
+        f.edges.push_back({"add", "mul"});
+        f.edges.push_back({"mul", "plus3"});
+        f.edges.push_back({"const3", "plus3"});
+
+        rt::EventBus bus;
+        rt::ThreadPool pool(3);
+        rt::StdLogger logger; rt::SteadyClock clock; rt::LocalFS fs;
+        wf::SimpleContext ctx(logger, clock, fs);
+        bus.subscribe([&](const rt::Event& e){
+            if (e.type == "task_started") std::cout << "[MATH] start: " << e.id << "\n";
+            if (e.type == "task_finished") std::cout << "[MATH] done:  " << e.id << " ok=" << (e.success?"true":"false") << "\n";
+        });
+        wf::Executor exec(bus, pool);
+        bool ok2 = exec.run(f, ctx);
+        std::cout << "Math flow result ok: " << (ok2?"true":"false") << ", final=" << ctx.get("final") << std::endl;
     }
 
     pm.unloadAll();

@@ -1,0 +1,50 @@
+{
+  "final_key": "final_report",
+  "tasks": [
+    {
+      "id": "mon_cpu",
+      "type": "Shell",
+      "params": {
+        "cmd": "cmd /C \"mkdir data 2>nul & echo cpu> data\\cpu.csv\"",
+        "out_key": "cpu_csv",
+        "out_value": "data\\cpu.csv",
+        "check_exists": true
+      }
+    },
+    {
+      "id": "mon_mem",
+      "type": "Shell",
+      "params": {
+        "cmd": "cmd /C \"mkdir data 2>nul & echo mem> data\\mem.csv\"",
+        "out_key": "mem_csv",
+        "out_value": "data\\mem.csv",
+        "check_exists": true
+      }
+    },
+    {
+      "id": "mon_gpu",
+      "type": "Shell",
+      "params": {
+        "cmd": "cmd /C \"mkdir data 2>nul & echo gpu> data\\gpu.csv\"",
+        "out_key": "gpu_csv",
+        "out_value": "data\\gpu.csv",
+        "check_exists": true
+      }
+    },
+    {
+      "id": "analyze",
+      "type": "Shell",
+      "params": {
+        "cmd": "cmd /C \"type data\\cpu.csv data\\mem.csv data\\gpu.csv > data\\report.txt\"",
+        "out_key": "final_report",
+        "out_value": "data\\report.txt",
+        "check_exists": true
+      }
+    }
+  ],
+  "edges": [
+    ["mon_cpu","analyze"],
+    ["mon_mem","analyze"],
+    ["mon_gpu","analyze"]
+  ]
+}

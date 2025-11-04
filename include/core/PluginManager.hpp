@@ -15,12 +15,8 @@
 #  include <dlfcn.h>
 #endif
 
-// Factory type used by plugins
-#if defined(_WIN32)
+// Factory types
 using CreateFunc = std::function<std::shared_ptr<core::IObject>()>;
-#else
-using CreateFunc = std::function<std::shared_ptr<core::IObject>()>;
-#endif
 
 namespace core {
 
@@ -46,6 +42,25 @@ public:
         if (it != registry_.end()) return it->second();
         std::cerr << "[PluginManager] not found: " << clsid << std::endl;
         return nullptr;
+    }
+
+    // Typed factory registration keyed by interface IID and name
+    template<typename T>
+    void registerFactory(const std::string& name, std::function<std::shared_ptr<T>()> fn) {
+        const char* iid = T::IID();
+        auto wrapper = [fn]() -> std::shared_ptr<IObject> { return fn(); };
+        typed_[iid][name] = std::move(wrapper);
+        std::cout << "[PluginManager] registerFactory(" << iid << ":" << name << ")" << std::endl;
+    }
+
+    template<typename T>
+    std::shared_ptr<T> createTyped(const std::string& name) {
+        const char* iid = T::IID();
+        auto itIntf = typed_.find(iid);
+        if (itIntf == typed_.end()) return nullptr;
+        auto it = itIntf->second.find(name);
+        if (it == itIntf->second.end()) return nullptr;
+        return std::dynamic_pointer_cast<T>(it->second());
     }
 
     // Load a plugin from a shared library (.so/.dll)
@@ -105,6 +120,7 @@ public:
 private:
     std::unordered_map<std::string, CreateFunc> registry_;
     std::vector<void*> handles_;
+    std::unordered_map<std::string, std::unordered_map<std::string, CreateFunc>> typed_;
 };
 
 } // namespace core

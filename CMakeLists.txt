@@ -10,6 +10,9 @@ add_executable(app
   src/app/main.cpp
   src/config/ConfigParser.cpp
   src/ui/console_ui.cpp
+  src/runtime/Services.cpp
+  src/workflow/Executor.cpp
+  src/workflow/WorkflowParser.cpp
 )
 
 target_include_directories(app PRIVATE
@@ -30,4 +33,12 @@ set_target_properties(app PROPERTIES
 # 仅 Linux 需要 -ldl；macOS 不需要
 if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
   target_link_libraries(app PRIVATE dl)
+endif()
+
+# Optionally build bundled plugins
+if (EXISTS "${CMAKE_SOURCE_DIR}/plugins/json_compare/CMakeLists.txt")
+  add_subdirectory(plugins/json_compare)
+endif()
+if (EXISTS "${CMAKE_SOURCE_DIR}/plugins/simple/CMakeLists.txt")
+  add_subdirectory(plugins/simple)
 endif()

@@ -203,4 +203,9 @@ PLUGIN_EXPORT void registerPlugin(core::PluginManager& m) {
             return std::make_shared<core::JsonComparator>();
         }
     );
+
+    // Also register typed factory for IComparator under a stable name
+    m.registerFactory<core::IComparator>("default_json_compare", [](){
+        return std::make_shared<core::JsonComparator>();
+    });
 }
