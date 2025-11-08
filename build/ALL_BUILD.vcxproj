@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveNugetPackages>false</ResolveNugetPackages>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DBF477C9-A239-3269-B040-2DAE3A4E36CB}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="G:\HKAVISION\Porject\Simple_plugin_framework\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule G:/HKAVISION/Porject/Simple_plugin_framework/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+D:\3D_Measure\CMake\bin\cmake.exe -SG:/HKAVISION/Porject/Simple_plugin_framework -BG:/HKAVISION/Porject/Simple_plugin_framework/build --check-stamp-file G:/HKAVISION/Porject/Simple_plugin_framework/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeRCInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\MSVC.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\build\CMakeFiles\3.29.0-rc4\CMakeCXXCompiler.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\build\CMakeFiles\3.29.0-rc4\CMakeRCCompiler.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\build\CMakeFiles\3.29.0-rc4\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule G:/HKAVISION/Porject/Simple_plugin_framework/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+D:\3D_Measure\CMake\bin\cmake.exe -SG:/HKAVISION/Porject/Simple_plugin_framework -BG:/HKAVISION/Porject/Simple_plugin_framework/build --check-stamp-file G:/HKAVISION/Porject/Simple_plugin_framework/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeRCInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\MSVC.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\build\CMakeFiles\3.29.0-rc4\CMakeCXXCompiler.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\build\CMakeFiles\3.29.0-rc4\CMakeRCCompiler.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\build\CMakeFiles\3.29.0-rc4\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule G:/HKAVISION/Porject/Simple_plugin_framework/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+D:\3D_Measure\CMake\bin\cmake.exe -SG:/HKAVISION/Porject/Simple_plugin_framework -BG:/HKAVISION/Porject/Simple_plugin_framework/build --check-stamp-file G:/HKAVISION/Porject/Simple_plugin_framework/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeRCInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\MSVC.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\build\CMakeFiles\3.29.0-rc4\CMakeCXXCompiler.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\build\CMakeFiles\3.29.0-rc4\CMakeRCCompiler.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\build\CMakeFiles\3.29.0-rc4\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule G:/HKAVISION/Porject/Simple_plugin_framework/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+D:\3D_Measure\CMake\bin\cmake.exe -SG:/HKAVISION/Porject/Simple_plugin_framework -BG:/HKAVISION/Porject/Simple_plugin_framework/build --check-stamp-file G:/HKAVISION/Porject/Simple_plugin_framework/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeRCInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Compiler\MSVC.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\Windows.cmake;D:\3D_Measure\CMake\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\build\CMakeFiles\3.29.0-rc4\CMakeCXXCompiler.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\build\CMakeFiles\3.29.0-rc4\CMakeRCCompiler.cmake;G:\HKAVISION\Porject\Simple_plugin_framework\build\CMakeFiles\3.29.0-rc4\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="G:\HKAVISION\Porject\Simple_plugin_framework\build\ZERO_CHECK.vcxproj">
+      <Project>{A28229CA-ED06-3386-B8AF-43164B2ABC08}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="G:\HKAVISION\Porject\Simple_plugin_framework\build\app.vcxproj">
+      <Project>{56AC7ED8-49C4-3AEB-A6E2-E6D6F2B86E13}</Project>
+      <Name>app</Name>
+    </ProjectReference>
+    <ProjectReference Include="G:\HKAVISION\Porject\Simple_plugin_framework\build\plugins\json_compare\json_compare.vcxproj">
+      <Project>{F2D7B807-4D1D-3DEE-8F04-FBEC0F681E16}</Project>
+      <Name>json_compare</Name>
+    </ProjectReference>
+    <ProjectReference Include="G:\HKAVISION\Porject\Simple_plugin_framework\build\plugins\simple\simple.vcxproj">
+      <Project>{671C8233-383E-3339-912C-A5E6C6F0CB83}</Project>
+      <Name>simple</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

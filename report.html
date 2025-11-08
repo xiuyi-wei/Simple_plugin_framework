@@ -1,0 +1,57 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>JSON 差异报告</title><style>body{font-family:Consolas,Menlo,monospace;margin:24px;}.hdr{display:flex;align-items:center;gap:12px;margin-bottom:16px;}.hdr img{height:36px} .ttl{font-size:20px;font-weight:600}.legend{font-size:12px;color:#666;margin-bottom:8px}.line{white-space:pre-wrap}.ok{color:#2e7d32} .diff{color:#c62828;background:#ffebee}.err{color:#b71c1c;background:#ffebee;font-weight:bold}</style></head><body><div class="hdr"><div class="ttl">JSON 差异报告</div></div><div class="legend">√=相同，×=不同，E=结构/类型/缺失错误</div><div class="line err">对照报告（左=ours，右=golden；对象按插入顺序，叶子尾注 √/×/E）</div>
+<div class="line err">说明：√=相同，×=同类型值不同，E=结构/类型/缺失错误</div>
+<div class="line line"></div>
+<div class="line line">{</div>
+<div class="line line">  "workflow": {</div>
+<div class="line err">    "name": "Engine System Monitor Pipeline" // golden: "Engine System Monitor Pipeline" √</div>
+<div class="line ok">    "version": "1.0.0" // golden: "1.0.0" √</div>
+<div class="line diff">    "description": "引擎系统资源监控与性能分析模块化工作流" // golden: "" ×</div>
+<div class="line line">  }</div>
+<div class="line line">  "system_resource_monitor": {</div>
+<div class="line diff">    "description": "系统资源监控模块，实时采集 CPU、内存、显存、帧率等指标" // golden: "系统资源监控模块，实时采集 CPU、内存、显存、帧率等指标" √</div>
+<div class="line line">    "inputs": {</div>
+<div class="line diff">      "target_process": "engine_app" // golden: "1" ×</div>
+<div class="line ok">      "interval_sec": 1 // golden: 1 √</div>
+<div class="line ok">      "duration_sec": 300 // golden: 300 √</div>
+<div class="line line">    }</div>
+<div class="line line">    "metrics": [</div>
+<div class="line line">      {</div>
+<div class="line diff">        "name": "cpu_usage_percent" // golden: "2" ×</div>
+<div class="line ok">        "valid": true // golden: true √</div>
+<div class="line diff">        "description": "引擎进程的 CPU 利用率 (%)" // golden: "3 CPU 利用率 (%)" ×</div>
+<div class="line ok">        "scripts": "monitor_cpu_usage.sh" // golden: "monitor_cpu_usage.sh" √</div>
+<div class="line ok">        "outputs": "./data/performance/cpu_usage.csv" // golden: "./data/performance/cpu_usage.csv" √</div>
+<div class="line line">      }</div>
+<div class="line line">      {</div>
+<div class="line ok">        "name": "memory_usage_kb" // golden: "memory_usage_kb" √</div>
+<div class="line ok">        "valid": true // golden: true √</div>
+<div class="line ok">        "description": "引擎进程占用的系统内存 (KB)" // golden: "引擎进程占用的系统内存 (KB)" √</div>
+<div class="line ok">        "scripts": "monitor_memory_usage.sh" // golden: "monitor_memory_usage.sh" √</div>
+<div class="line ok">        "outputs": "./data/performance/mem_usage.csv" // golden: "./data/performance/mem_usage.csv" √</div>
+<div class="line line">      }</div>
+<div class="line line">      {</div>
+<div class="line diff">        "name": "gpu_memory_kb" // golden: "4" ×</div>
+<div class="line ok">        "valid": false // golden: false √</div>
+<div class="line diff">        "description": "显存占用 (KB)，若系统无 GPU 可关闭" // golden: "显存占用 (KB)，若系统无 GPU 可关闭" √</div>
+<div class="line ok">        "scripts": "monitor_gpu_memory.sh" // golden: "monitor_gpu_memory.sh" √</div>
+<div class="line ok">        "outputs": "./data/performance/gpu_mem_usage.csv" // golden: "./data/performance/gpu_mem_usage.csv" √</div>
+<div class="line line">      }</div>
+<div class="line line">      {</div>
+<div class="line ok">        "name": "fps" // golden: "fps" √</div>
+<div class="line ok">        "valid": false // golden: false √</div>
+<div class="line diff">        "description": "引擎实时帧率 (frames per second)" // golden: "引擎实时帧率 (frames per second)" √</div>
+<div class="line ok">        "scripts": "monitor_fps.sh" // golden: "monitor_fps.sh" √</div>
+<div class="line ok">        "outputs": "./data/performance/fps.csv" // golden: "./data/performance/fps.csv" √</div>
+<div class="line line">      }</div>
+<div class="line line">    ]</div>
+<div class="line line">    "outputs": {</div>
+<div class="line ok">      "csv_file": "./data/performance/*.csv" // golden: "./data/performance/*.csv" √</div>
+<div class="line ok">      "plot_file": "./data/performance/*.png" // golden: "./data/performance/*.png" √</div>
+<div class="line line">    }</div>
+<div class="line line">  }</div>
+<div class="line line">  "report": {</div>
+<div class="line ok">    "combine_script": "" // golden: "" √</div>
+<div class="line ok">    "final_archive": "" // golden: "" √</div>
+<div class="line line">  }</div>
+<div class="line line">}</div>
+</body></html>

@@ -1,50 +1,35 @@
 {
   "final_key": "final_report",
+  "vars": {
+    "base_dir": "./workspace"
+  },
   "tasks": [
     {
-      "id": "mon_cpu",
+      "id": "create_dirs",
       "type": "Shell",
-      "params": {
-        "cmd": "cmd /C \"mkdir data 2>nul & echo cpu> data\\cpu.csv\"",
-        "out_key": "cpu_csv",
-        "out_value": "data\\cpu.csv",
-        "check_exists": true
-      }
+      "script_path": "./scripts/create_dirs.sh",
+      "args": [
+        { "value": "{base_dir}",      "filters": ["abspath"] },             
+        { "value": "{base_dir}/sub",  "filters": ["abspath"] },             
+        { "value": "flag.txt",        "filters": [] }                      
+      ],
+      "out_key": "created_flag",
+      "out_value": "{base_dir}/sub/flag.txt",
+      "check_exists": true
     },
     {
-      "id": "mon_mem",
+      "id": "monitor_perf",
       "type": "Shell",
-      "params": {
-        "cmd": "cmd /C \"mkdir data 2>nul & echo mem> data\\mem.csv\"",
-        "out_key": "mem_csv",
-        "out_value": "data\\mem.csv",
-        "check_exists": true
-      }
-    },
-    {
-      "id": "mon_gpu",
-      "type": "Shell",
-      "params": {
-        "cmd": "cmd /C \"mkdir data 2>nul & echo gpu> data\\gpu.csv\"",
-        "out_key": "gpu_csv",
-        "out_value": "data\\gpu.csv",
-        "check_exists": true
-      }
-    },
-    {
-      "id": "analyze",
-      "type": "Shell",
-      "params": {
-        "cmd": "cmd /C \"type data\\cpu.csv data\\mem.csv data\\gpu.csv > data\\report.txt\"",
-        "out_key": "final_report",
-        "out_value": "data\\report.txt",
-        "check_exists": true
-      }
+      "script_path": "./scripts/monitor_perf.sh",
+      "args": [
+        { "value": "engine_app", "filters": [] }                            
+      ],
+      "out_key": "perf_log",
+      "out_value": "data/perf.log",
+      "check_exists": false
     }
   ],
   "edges": [
-    ["mon_cpu","analyze"],
-    ["mon_mem","analyze"],
-    ["mon_gpu","analyze"]
+    ["create_dirs", "monitor_perf"]
   ]
 }
