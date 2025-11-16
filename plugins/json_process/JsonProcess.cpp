@@ -1,122 +1,117 @@
 // plugins/json_compare/JsonCompare.cpp
 #include "core/IJsonProcess.hpp"
-#include "core/PluginManager.hpp"    // 现阶段沿用你的框架，仍用 registerPlugin 入口
+#include "core/PluginManager.hpp"
 #include <nlohmann/json.hpp>
 
-#include <fstream>
 #include <iostream>
 #include <string>
 #include <algorithm>
-#include <sstream>
 #include <memory>
+#include <vector>
 
-using json = nlohmann::ordered_json;  // ★ 保持对象键的插入顺序
-namespace{
-        void find_keyValue_json(const json& j,
-                                const std::vector<std::string>& keys,
-                                size_t idx,
-                                std::vector<json>& results)
-        {
-            if (idx >= keys.size()) return;
+using json = nlohmann::ordered_json;  // 保持对象键的插入顺序
 
-            if (j.is_object()) {
-                for (auto& it : j.items()) {
-                    if (it.key() == keys[idx]) {
-                        if (idx == keys.size() - 1) {
-                            results.push_back(it.value());
-                        } else {
-                            find_keyValue_json(it.value(), keys, idx + 1, results);
-                        }
-                    } else {
-                        find_keyValue_json(it.value(), keys, idx, results);
-                    }
-                }
-            }
-            else if (j.is_array()) {
-                for (const auto& el : j) {
-                    find_keyValue_json(el, keys, idx, results);
-                }
-            }
+namespace {
+// Traverse strictly along the provided path; arrays are expanded but no other
+// keys at the same level are scanned.
+void collect_by_path(const json& node,
+                     const std::vector<std::string>& keys,
+                     size_t idx,
+                     std::vector<json>& results) {
+    if (idx >= keys.size()) {
+        results.push_back(node);
+        return;
+    }
+
+    if (node.is_object()) {
+        auto it = node.find(keys[idx]);
+        if (it == node.end()) return;
+        collect_by_path(it.value(), keys, idx + 1, results);
+    } else if (node.is_array()) {
+        for (const auto& element : node) {
+            collect_by_path(element, keys, idx, results);
         }
-};
+    }
+}
+} // namespace
 
 namespace core {
 
-// 插件实现：把对比能力挂到 IJsonProcess
 class JsonProcess : public IJsonProcess {
 public:
-    bool processJsonFiles(const std::string& srcPath,
-                          const std::string& desPath,
+    bool processJsonFiles(const std::string& srcContent,
+                          std::string& outContent,
                           const std::string& keywords,
                           const std::string& processMethod) override {
-#if defined(_WIN32)                    
-        Wow64DisableWow64FsRedirection(NULL);
-#endif
-        std::cout << "[WD] " << std::filesystem::current_path() << "\n";
-         auto srcFixed = std::filesystem::absolute(srcPath);
-        auto desFixed = std::filesystem::absolute(desPath);
-
-        std::cerr << "[PLUGIN] fixed src=" << srcFixed.string() << "\n";
-        std::cerr << "[PLUGIN] fixed des=" << desFixed.string() << "\n";
-
-        std::ifstream fs(srcFixed);
-
-        // 参数检查
-        std::cout << "[Debug] Try load JSON from: " << srcPath << std::endl;
-        std::ifstream test(srcPath);
-        std::cout << "[Debug] File good()? " << test.good() << std::endl;
-        std::cout << "[Debug] File size: " << test.rdbuf()->in_avail() << std::endl;
-
-        json src_path_json, des_path_json;
-        try{
-            std::ifstream fs(srcFixed), fr(desFixed);
-            if(!fs || !fr){
-                std::cerr << "[JsonProcess] openfile failed: "
-                          << srcFixed << " / " << desFixed << "\n";
-                return false;
-            }
-            fs >> src_path_json; fr >> des_path_json;
-        }catch(const std::exception& e){
+        json srcJson;
+        try {
+            srcJson = json::parse(srcContent);
+        } catch (const std::exception& e) {
             std::cerr << "[JsonProcess] parse failed: " << e.what() << "\n";
             return false;
         }
 
-        std::ofstream ofs(desFixed);
-        if(!ofs){
-            std::cerr << "[JsonProcess] write failed: " << desFixed << "\n";
-            return false;
-        }
+        json result = json::object();
+        result["processMethod"] = processMethod;
+        result["keywords"] = keywords;
+        result["results"] = json::array();
 
-        // 简单示例：根据 processMethod 进行不同处理
-        if(processMethod == "find"){
-            size_t pos = 0;
+        if (processMethod == "find") {
+            std::cout << "[JsonProcess] processMethod: find\n";
             std::vector<std::string> keys;
             std::string token;
             std::string tempKeywords = keywords;
-            // 这里怎么抽象出json的结果的值呢，因为可能是多种类型
-            std::vector<json> results;
+            size_t pos = 0;
+
             while ((pos = tempKeywords.find('/')) != std::string::npos) {
                 token = tempKeywords.substr(0, pos);
-                keys.push_back(token);
-                tempKeywords = tempKeywords.substr( pos + 1);
+                if (!token.empty()) {
+                    keys.push_back(token);
+                }
+                tempKeywords.erase(0, pos + 1);
             }
-            keys.push_back(tempKeywords); // Add the last segment after the final '/'
-            find_keyValue_json(src_path_json,
-                                keys,
-                                0,
-                                results);
+            if (!tempKeywords.empty()) {
+                keys.push_back(tempKeywords);
+            }
+
+            if (keys.empty()) {
+                std::cerr << "[JsonProcess] keywords are empty\n";
+                return false;
+            }
+
+            std::vector<json> results;
+            if (!srcJson.is_object()) {
+                std::cerr << "[JsonProcess] Root JSON is not an object\n";
+            } else {
+                auto it = srcJson.find(keys[0]);
+                if (it == srcJson.end()) {
+                    std::cerr << "[JsonProcess] Top-level key not found: "
+                              << keys[0] << "\n";
+                } else {
+                    collect_by_path(it.value(), keys, 1, results);
+                }
+            }
+
+            for (const auto& item : results) {
+                result["results"].push_back(item);
+            }
+        } else {
+            std::cerr << "[JsonProcess] Unsupported processMethod: "
+                      << processMethod << "\n";
+            return false;
         }
+
+        outContent = result.dump(4);
         return true;
     }
 };
 
 } // namespace core
 
-// —— 导出注册函数（保持与你的 PluginManager::loadPlugin 查找的符号一致）——
 #if defined(_WIN32)
-  #define PLUGIN_EXPORT extern "C" __declspec(dllexport)
+#  define PLUGIN_EXPORT extern "C" __declspec(dllexport)
 #else
-  #define PLUGIN_EXPORT extern "C"
+#  define PLUGIN_EXPORT extern "C"
 #endif
 
 PLUGIN_EXPORT void registerPlugin(core::PluginManager& m) {
@@ -126,7 +121,6 @@ PLUGIN_EXPORT void registerPlugin(core::PluginManager& m) {
         }
     );
 
-    // Also register typed factory for IJsonProcess under a stable name
     m.registerFactory<core::IJsonProcess>("default_json_process", [](){
         return std::make_shared<core::JsonProcess>();
     });

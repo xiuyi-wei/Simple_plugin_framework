@@ -9,10 +9,10 @@ public:
     DEFINE_IID(IJsonProcess);
     virtual ~IJsonProcess() override = default;
 
-    // Compare two JSON files and write a human-readable report to outPath.
-    // Returns true if operation succeeded (report generated), false on error.
-    virtual bool processJsonFiles(const std::string& srcPath,
-                                  const std::string& desPath,
+    // Process JSON content and return a generated report through outContent.
+    // Returns true if operation succeeded, false on error.
+    virtual bool processJsonFiles(const std::string& srcContent,
+                                  std::string& outContent,
                                   const std::string& keywords,
                                   const std::string& processMethod) = 0;
 };

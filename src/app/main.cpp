@@ -24,6 +24,7 @@
 #include <thread>
 #include <chrono>
 #include <fstream>
+#include <sstream>
 #include "nlohmann/json.hpp"
 #include <filesystem>
 using namespace core;
@@ -97,17 +98,6 @@ int main()
      // 加载插件
     core::PluginManager::instance().loadPlugin("plugins/json_process.dll");
 
-    std::cout << "[WD] " << std::filesystem::current_path() << "\n";
-
-    std::ifstream fs("G:/HKAVISION/test/Simple_plugin_framework11111111/input.json");
-    std::cout << "[Test G:/ path] good=" << fs.good()  << "\n";
-
-    std::ifstream fs2("G:\\HKAVISION\\test\\Simple_plugin_framework11111111\\input.json");
-    std::cout << "[Test G:\\\\ path] good=" << fs2.good()  << "\n";
-
-    std::ifstream fs3("G://HKAVISION//test//Simple_plugin_framework11111111//input.json");
-    std::cout << "[Test G:// path] good=" << fs3.good()  << "\n";
-
     // 测试下JsonProcess插件
     auto jsonProcess = core::PluginManager::instance()
         .createTyped<IJsonProcess>("default_json_process");
@@ -115,28 +105,38 @@ int main()
     std::string srcPath = "input.json";
     std::string desPath = "output.json";
 
-    auto p = std::filesystem::absolute(srcPath);
-    std::cout << "[After normalize] " << p.string() << "\n";
-    // std::ifstream fs(p);
-    std::ifstream test(p);
-    std::string line;
-    int count = 0;
-    while (std::getline(test, line)) {
-        std::cout << "[Line] " << line << "\n";
-        count++;
-    }
-
     auto srcAbs = std::filesystem::weakly_canonical(srcPath).string();
     auto desAbs = std::filesystem::weakly_canonical(desPath).string();
     std::cout << "[Abs paths] " << srcAbs << " -> " << desAbs << "\n";
-    std::cout << "[File lines] " << count << "\n";
+
+    std::ifstream srcStream(srcAbs);
+    if (!srcStream) {
+        std::cerr << "[Main] Failed to open " << srcAbs << "\n";
+        return -1;
+    }
+    std::ostringstream buffer;
+    buffer << srcStream.rdbuf();
+    const std::string srcContent = buffer.str();
+    std::cout << "[Main] Loaded " << srcContent.size() << " bytes from src file\n";
+
     if (jsonProcess) {
-        jsonProcess->processJsonFiles(
-            srcAbs,
-            desAbs,
+        std::string pluginOutput;
+        bool ok = jsonProcess->processJsonFiles(
+            srcContent,
+            pluginOutput,
             "key1/key2",
-            "find"
-        );
+            "find");
+        if (ok) {
+            std::ofstream out(desAbs);
+            if (!out) {
+                std::cerr << "[Main] Failed to open " << desAbs << " for writing\n";
+                return -1;
+            }
+            out << pluginOutput;
+            std::cout << "[Main] Plugin output saved to " << desAbs << "\n";
+        } else {
+            std::cerr << "[Main] Plugin processing failed\n";
+        }
     } else {
         std::cerr << "Failed to create JsonProcess instance." << std::endl;
     }
