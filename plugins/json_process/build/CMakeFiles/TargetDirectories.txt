@@ -1,0 +1,3 @@
+G:/HKAVISION/test/Simple_plugin_framework11111111/plugins/json_process/build/CMakeFiles/json_process.dir
+G:/HKAVISION/test/Simple_plugin_framework11111111/plugins/json_process/build/CMakeFiles/ALL_BUILD.dir
+G:/HKAVISION/test/Simple_plugin_framework11111111/plugins/json_process/build/CMakeFiles/ZERO_CHECK.dir

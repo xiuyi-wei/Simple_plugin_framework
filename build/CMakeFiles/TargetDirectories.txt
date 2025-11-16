@@ -1,6 +1,6 @@
-G:/HKAVISION/Porject/Simple_plugin_framework/build/CMakeFiles/app.dir
-G:/HKAVISION/Porject/Simple_plugin_framework/build/CMakeFiles/ALL_BUILD.dir
-G:/HKAVISION/Porject/Simple_plugin_framework/build/CMakeFiles/ZERO_CHECK.dir
-G:/HKAVISION/Porject/Simple_plugin_framework/build/plugins/json_compare/CMakeFiles/json_compare.dir
-G:/HKAVISION/Porject/Simple_plugin_framework/build/plugins/json_compare/CMakeFiles/ALL_BUILD.dir
-G:/HKAVISION/Porject/Simple_plugin_framework/build/plugins/simple/CMakeFiles/simple.dir
+G:/HKAVISION/test/Simple_plugin_framework11111111/build/CMakeFiles/app.dir
+G:/HKAVISION/test/Simple_plugin_framework11111111/build/CMakeFiles/ALL_BUILD.dir
+G:/HKAVISION/test/Simple_plugin_framework11111111/build/CMakeFiles/ZERO_CHECK.dir
+G:/HKAVISION/test/Simple_plugin_framework11111111/build/plugins/json_compare/CMakeFiles/json_compare.dir
+G:/HKAVISION/test/Simple_plugin_framework11111111/build/plugins/json_compare/CMakeFiles/ALL_BUILD.dir
+G:/HKAVISION/test/Simple_plugin_framework11111111/build/plugins/simple/CMakeFiles/simple.dir

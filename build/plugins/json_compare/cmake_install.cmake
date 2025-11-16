@@ -1,4 +1,4 @@
-# Install script for directory: G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare
+# Install script for directory: G:/HKAVISION/test/Simple_plugin_framework11111111/plugins/json_compare
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

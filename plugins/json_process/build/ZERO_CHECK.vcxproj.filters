@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="G:\HKAVISION\test\Simple_plugin_framework11111111\plugins\json_process\build\CMakeFiles\1641036b00df623cdf40d9589f260153\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{37D7FEF3-2F55-30D0-926D-D7EAAF421229}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,39 @@
+{
+  "key1": {
+    "key2": "VALUE-A",
+    "x": 1
+  },
+  "other": {
+    "key1": {
+      "key2": {
+        "nested": "VALUE-B"
+      }
+    }
+  },
+  "arr": [
+    {
+      "key1": {
+        "key2": 100
+      }
+    },
+    {
+      "a": 1
+    },
+    {
+      "key1": {
+        "key2": ["VALUE-C1", "VALUE-C2"]
+      }
+    }
+  ],
+  "deep": {
+    "level1": {
+      "level2": {
+        "key1": {
+          "key2": {
+            "xx": 999
+          }
+        }
+      }
+    }
+  }
+}

@@ -22,7 +22,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{671C8233-383E-3339-912C-A5E6C6F0CB83}</ProjectGuid>
+    <ProjectGuid>{297A51C9-A69B-3EA6-82E3-7C8EDEEC72E5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
@@ -59,25 +59,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\plugins\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\HKAVISION\test\Simple_plugin_framework11111111\plugins\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">simple.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">simple</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\plugins\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:\HKAVISION\test\Simple_plugin_framework11111111\plugins\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">simple.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">simple</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\plugins\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:\HKAVISION\test\Simple_plugin_framework11111111\plugins\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">simple.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">simple</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\plugins\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:\HKAVISION\test\Simple_plugin_framework11111111\plugins\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">simple.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">simple</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
@@ -87,12 +87,13 @@
   <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\HKAVISION\test\Simple_plugin_framework11111111\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <Optimization>Disabled</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -105,10 +106,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\";simple_EXPORTS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\HKAVISION\test\Simple_plugin_framework11111111\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\HKAVISION\test\Simple_plugin_framework11111111\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -121,8 +122,8 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>G:/HKAVISION/Porject/Simple_plugin_framework/build/lib/Debug/simple.lib</ImportLibrary>
-      <ProgramDataBaseFile>G:/HKAVISION/Porject/Simple_plugin_framework/plugins/Debug/simple.pdb</ProgramDataBaseFile>
+      <ImportLibrary>G:/HKAVISION/test/Simple_plugin_framework11111111/build/lib/Debug/simple.lib</ImportLibrary>
+      <ProgramDataBaseFile>G:/HKAVISION/test/Simple_plugin_framework11111111/plugins/Debug/simple.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -131,10 +132,11 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\HKAVISION\test\Simple_plugin_framework11111111\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <Optimization>MaxSpeed</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -149,10 +151,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\";simple_EXPORTS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\HKAVISION\test\Simple_plugin_framework11111111\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\HKAVISION\test\Simple_plugin_framework11111111\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -165,8 +167,8 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>G:/HKAVISION/Porject/Simple_plugin_framework/build/lib/Release/simple.lib</ImportLibrary>
-      <ProgramDataBaseFile>G:/HKAVISION/Porject/Simple_plugin_framework/plugins/Release/simple.pdb</ProgramDataBaseFile>
+      <ImportLibrary>G:/HKAVISION/test/Simple_plugin_framework11111111/build/lib/Release/simple.lib</ImportLibrary>
+      <ProgramDataBaseFile>G:/HKAVISION/test/Simple_plugin_framework11111111/plugins/Release/simple.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -175,10 +177,11 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\HKAVISION\test\Simple_plugin_framework11111111\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <Optimization>MinSpace</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -193,10 +196,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";simple_EXPORTS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\HKAVISION\test\Simple_plugin_framework11111111\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\HKAVISION\test\Simple_plugin_framework11111111\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -209,8 +212,8 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>G:/HKAVISION/Porject/Simple_plugin_framework/build/lib/MinSizeRel/simple.lib</ImportLibrary>
-      <ProgramDataBaseFile>G:/HKAVISION/Porject/Simple_plugin_framework/plugins/MinSizeRel/simple.pdb</ProgramDataBaseFile>
+      <ImportLibrary>G:/HKAVISION/test/Simple_plugin_framework11111111/build/lib/MinSizeRel/simple.lib</ImportLibrary>
+      <ProgramDataBaseFile>G:/HKAVISION/test/Simple_plugin_framework11111111/plugins/MinSizeRel/simple.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -219,11 +222,12 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\HKAVISION\test\Simple_plugin_framework11111111\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <Optimization>MaxSpeed</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -236,10 +240,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\";simple_EXPORTS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\HKAVISION\test\Simple_plugin_framework11111111\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>G:\HKAVISION\Porject\Simple_plugin_framework\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\HKAVISION\test\Simple_plugin_framework11111111\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -252,8 +256,8 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>G:/HKAVISION/Porject/Simple_plugin_framework/build/lib/RelWithDebInfo/simple.lib</ImportLibrary>
-      <ProgramDataBaseFile>G:/HKAVISION/Porject/Simple_plugin_framework/plugins/RelWithDebInfo/simple.pdb</ProgramDataBaseFile>
+      <ImportLibrary>G:/HKAVISION/test/Simple_plugin_framework11111111/build/lib/RelWithDebInfo/simple.lib</ImportLibrary>
+      <ProgramDataBaseFile>G:/HKAVISION/test/Simple_plugin_framework11111111/plugins/RelWithDebInfo/simple.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -261,11 +265,11 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="G:\HKAVISION\Porject\Simple_plugin_framework\plugins\simple\CMakeLists.txt">
+    <CustomBuild Include="G:\HKAVISION\test\Simple_plugin_framework11111111\plugins\simple\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule G:/HKAVISION/Porject/Simple_plugin_framework/plugins/simple/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule G:/HKAVISION/test/Simple_plugin_framework11111111/plugins/simple/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-D:\3D_Measure\CMake\bin\cmake.exe -SG:/HKAVISION/Porject/Simple_plugin_framework -BG:/HKAVISION/Porject/Simple_plugin_framework/build --check-stamp-file G:/HKAVISION/Porject/Simple_plugin_framework/build/plugins/simple/CMakeFiles/generate.stamp
+D:\3D_Measure\CMake\bin\cmake.exe -SG:/HKAVISION/test/Simple_plugin_framework11111111 -BG:/HKAVISION/test/Simple_plugin_framework11111111/build --check-stamp-file G:/HKAVISION/test/Simple_plugin_framework11111111/build/plugins/simple/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -274,11 +278,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\build\plugins\simple\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\HKAVISION\test\Simple_plugin_framework11111111\build\plugins\simple\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule G:/HKAVISION/Porject/Simple_plugin_framework/plugins/simple/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule G:/HKAVISION/test/Simple_plugin_framework11111111/plugins/simple/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-D:\3D_Measure\CMake\bin\cmake.exe -SG:/HKAVISION/Porject/Simple_plugin_framework -BG:/HKAVISION/Porject/Simple_plugin_framework/build --check-stamp-file G:/HKAVISION/Porject/Simple_plugin_framework/build/plugins/simple/CMakeFiles/generate.stamp
+D:\3D_Measure\CMake\bin\cmake.exe -SG:/HKAVISION/test/Simple_plugin_framework11111111 -BG:/HKAVISION/test/Simple_plugin_framework11111111/build --check-stamp-file G:/HKAVISION/test/Simple_plugin_framework11111111/build/plugins/simple/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -287,11 +291,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\build\plugins\simple\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:\HKAVISION\test\Simple_plugin_framework11111111\build\plugins\simple\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule G:/HKAVISION/Porject/Simple_plugin_framework/plugins/simple/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule G:/HKAVISION/test/Simple_plugin_framework11111111/plugins/simple/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-D:\3D_Measure\CMake\bin\cmake.exe -SG:/HKAVISION/Porject/Simple_plugin_framework -BG:/HKAVISION/Porject/Simple_plugin_framework/build --check-stamp-file G:/HKAVISION/Porject/Simple_plugin_framework/build/plugins/simple/CMakeFiles/generate.stamp
+D:\3D_Measure\CMake\bin\cmake.exe -SG:/HKAVISION/test/Simple_plugin_framework11111111 -BG:/HKAVISION/test/Simple_plugin_framework11111111/build --check-stamp-file G:/HKAVISION/test/Simple_plugin_framework11111111/build/plugins/simple/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -300,11 +304,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\build\plugins\simple\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:\HKAVISION\test\Simple_plugin_framework11111111\build\plugins\simple\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule G:/HKAVISION/Porject/Simple_plugin_framework/plugins/simple/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule G:/HKAVISION/test/Simple_plugin_framework11111111/plugins/simple/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-D:\3D_Measure\CMake\bin\cmake.exe -SG:/HKAVISION/Porject/Simple_plugin_framework -BG:/HKAVISION/Porject/Simple_plugin_framework/build --check-stamp-file G:/HKAVISION/Porject/Simple_plugin_framework/build/plugins/simple/CMakeFiles/generate.stamp
+D:\3D_Measure\CMake\bin\cmake.exe -SG:/HKAVISION/test/Simple_plugin_framework11111111 -BG:/HKAVISION/test/Simple_plugin_framework11111111/build --check-stamp-file G:/HKAVISION/test/Simple_plugin_framework11111111/build/plugins/simple/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -313,16 +317,16 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:\HKAVISION\Porject\Simple_plugin_framework\build\plugins\simple\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:\HKAVISION\test\Simple_plugin_framework11111111\build\plugins\simple\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="G:\HKAVISION\Porject\Simple_plugin_framework\plugins\simple\SimplePlugin.cpp" />
+    <ClCompile Include="G:\HKAVISION\test\Simple_plugin_framework11111111\plugins\simple\SimplePlugin.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="G:\HKAVISION\Porject\Simple_plugin_framework\build\ZERO_CHECK.vcxproj">
-      <Project>{A28229CA-ED06-3386-B8AF-43164B2ABC08}</Project>
+    <ProjectReference Include="G:\HKAVISION\test\Simple_plugin_framework11111111\build\ZERO_CHECK.vcxproj">
+      <Project>{D9501DA8-3267-33B4-AF9C-A90A1E14DCA1}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

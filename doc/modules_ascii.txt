@@ -1,0 +1,140 @@
+==============================
+子模块架构 ASCII 设计图（使用 |||| 与 ___）
+==============================
+
+1) 调度器：workflow::Executor
+----------------------------------------
+|||| Executor（并行 DAG 调度器）
+||||____________________________________
+|||| 角色/职责
+||||  - 基于入度/邻接表进行拓扑并行调度
+||||  - 将就绪任务提交到 ThreadPool 执行
+||||  - 在任务开始/结束时通过 EventBus 发布事件
+|||| 关键接口
+||||  - bool run(const WorkflowSpec& spec, ITaskContext& ctx)
+|||| 依赖
+||||  -> runtime::EventBus（publish）
+||||  -> runtime::ThreadPool（submit）
+||||  -> workflow::ITask（run）
+||||  -> workflow::ITaskContext（logger/clock/fs + KV）
+|||| 内部状态/数据
+||||  - indeg: map<string,int>（入度）
+||||  - adj:   map<string,vector<string>>（邻接）
+||||  - ready: queue<string>（就绪队列）
+||||  - remaining: atomic<int>（剩余任务数）
+||||  - ok: atomic<bool>（全局成功标志）
+|||| 交互/时序
+||||  ready -> submitNode -> ThreadPool
+||||  task_started/task_finished -> EventBus
+
+
+2) 线程池：runtime::ThreadPool
+----------------------------------------
+|||| ThreadPool（最小化线程池）
+||||____________________________________
+|||| 角色/职责
+||||  - 管理工作线程，消费任务队列并执行
+|||| 关键接口
+||||  - submit(F&& f, Args&&...) -> future<R>
+||||  - shutdown()
+|||| 内部结构
+||||  - workers_: vector<thread>
+||||  - tasks_: queue<function<void()>>
+||||  - m_/cv_: 互斥量与条件变量
+||||  - stopping_: atomic<bool>
+|||| 流程
+||||  submit -> 入队 -> 唤醒 worker -> 执行任务 -> 循环等待
+
+
+3) 事件总线：runtime::EventBus
+----------------------------------------
+|||| EventBus（同步发布/订阅）
+||||____________________________________
+|||| 角色/职责
+||||  - 解耦事件产生方与消费方
+|||| 关键接口
+||||  - subscribe(Handler)
+||||  - publish(const Event&)
+|||| 事件模型
+||||  - Event{ type, id, success, message }
+|||| 注意
+||||  - 当前为同步分发，订阅回调阻塞则占用发布线程
+||||  - 需在执行前完成订阅；高并发可扩展为异步队列
+
+
+4) 工作流解析器：workflow::WorkflowParser
+----------------------------------------
+|||| WorkflowParser（workflow.json -> WorkflowSpec）
+||||____________________________________
+|||| 角色/职责
+||||  - 解析 JSON，构建 tasks/edges/vars/final_key
+||||  - 支持 ShellTask（script_path/args/out_key/...）
+|||| 关键接口
+||||  - WorkflowSpec parseWorkflowJson(const string& path)
+|||| 依赖
+||||  - nlohmann::json（头文件）
+|||| 产物
+||||  - WorkflowSpec{ tasks: vector<shared_ptr<ITask>>, edges, vars }
+
+
+5) 任务：workflow::ShellTask（示例）
+----------------------------------------
+|||| ShellTask（外部脚本任务）
+||||____________________________________
+|||| 角色/职责
+||||  - 解析变量并应用过滤器（abspath/normpath/join/...）
+||||  - 组装命令，调用 bash/cmd 执行
+||||  - 可写回上下文键值（out_key/out_value），并按需校验文件存在
+|||| 关键接口
+||||  - TaskResult run(ITaskContext& ctx)
+|||| 依赖
+||||  -> ITaskContext.fs()（路径/存在性/创建目录等）
+||||  -> ITaskContext.logger()/clock()（可选）
+|||| 数据
+||||  - script_path, args[], outKey/outValue, checkExists
+
+
+6) 运行时服务：runtime::{StdLogger,SteadyClock,LocalFS}
+----------------------------------------
+|||| Services（基础设施能力）
+||||____________________________________
+|||| ILogger / StdLogger
+||||  - info/warn/error 到控制台
+|||| IClock / SteadyClock
+||||  - now() 提供稳态时钟时间点
+|||| IFileSystem / LocalFS
+||||  - exists/join/dirname/basename/normalize/absolute
+||||  - ensureDir/ensureParentDir
+|||| 说明
+||||  - 路径分隔符/绝对路径处理兼容 Win/Linux
+
+
+7) 插件管理：core::PluginManager
+----------------------------------------
+|||| PluginManager（动态加载与工厂注册）
+||||____________________________________
+|||| 角色/职责
+||||  - 通过 LoadLibrary/dlopen 加载插件
+||||  - 获取导出符号 registerPlugin(PluginManager&)
+||||  - 注册工厂：clsid -> CreateFunc(std::shared_ptr<IObject>())
+||||  - 按接口类型名注册/创建（typed factory）
+|||| 关键接口
+||||  - registerClass(clsid, CreateFunc)
+||||  - create(clsid) -> shared_ptr<IObject>
+||||  - registerFactory<T>(name, fn)
+||||  - createTyped<T>(name) -> shared_ptr<T>
+||||  - loadPlugin(path) / unloadAll()
+|||| 关系
+||||  -> plugins::*::registerPlugin 调用 registerClass/registerFactory
+||||  -> app 可选择性地 loadPlugin/create 使用插件
+
+
+附：简要交互关系（汇总）
+----------------------------------------
+|||| app::main
+||||   -> WorkflowParser.parse -> WorkflowSpec
+||||   -> Executor.run(spec, ctx)
+||||        -> ThreadPool.submit(ITask::run)
+||||        -> EventBus.publish(task_started/finished)
+||||   -> （可选）PluginManager.loadPlugin/create
+

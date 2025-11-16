@@ -1,4 +1,4 @@
-# Install script for directory: G:/HKAVISION/Porject/Simple_plugin_framework
+# Install script for directory: G:/HKAVISION/test/Simple_plugin_framework11111111
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,8 +34,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("G:/HKAVISION/Porject/Simple_plugin_framework/build/plugins/json_compare/cmake_install.cmake")
-  include("G:/HKAVISION/Porject/Simple_plugin_framework/build/plugins/simple/cmake_install.cmake")
+  include("G:/HKAVISION/test/Simple_plugin_framework11111111/build/plugins/json_compare/cmake_install.cmake")
+  include("G:/HKAVISION/test/Simple_plugin_framework11111111/build/plugins/simple/cmake_install.cmake")
 
 endif()
 
@@ -47,5 +47,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "G:/HKAVISION/Porject/Simple_plugin_framework/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "G:/HKAVISION/test/Simple_plugin_framework11111111/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

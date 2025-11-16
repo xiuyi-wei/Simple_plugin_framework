@@ -1,0 +1,138 @@
+==============================
+简单插件框架（ASCII 架构说明）
+==============================
+
+模块总览
+----------------------------------------
+app（应用）       |  workflow（工作流）   |  runtime（运行时服务） |  core（插件核心）  |  plugins（插件） | ui（界面辅助）
+------------------+----------------------+------------------------+--------------------+------------------+--------------
+src/app/main.cpp  | Executor / Parser    | Logger / Clock / FS    | IObject/Manager    | simple/json_cmp  | console_ui
+
+
+一、模块关系（高层）
+----------------------------------------
+
+  +--------------------+          parse/workflow.json           +-----------------------+
+  |     app::main      | -------------------------------------> | workflow::Parser      |
+  +--------------------+                                       +-----------+-----------+
+            |                                                           builds
+            | run(spec, ctx)                                             |
+            v                                                           v
+  +--------------------+       publish            +-----------------------+
+  | workflow::Executor | -----------------------> | runtime::EventBus     |
+  +----------+---------+                          +-----------------------+
+             |  schedule with ThreadPool
+             v
+  +--------------------+        uses FS/Logger/Clock         +-----------------------+
+  |   workflow::ITask  | <---------------------------------- | runtime::{FS,Logger,Clock}
+  |   (如 ShellTask)   |                                      +-----------------------+
+  +--------------------+
+
+  （可选）插件机制：
+  +--------------------+   load/create   +-------------------+   register   +---------------------+
+  |     app::main      | --------------> | core::PluginMgr   | <----------- | plugins::*::register|
+  +--------------------+                 +-------------------+              +---------------------+
+
+
+二、目录到职责映射
+----------------------------------------
+core
+  |-- include/core/IObject.hpp     : 所有插件接口的共同基类
+  |-- include/core/ISimple.hpp     : 示例接口，定义 add(a,b)
+  |-- include/core/IComparator.hpp : JSON 比对接口，定义 compareFiles(...)
+  |-- include/core/PluginManager.hpp : 插件注册与动态加载（LoadLibrary/dlopen）
+
+runtime
+  |-- include/runtime/Services.hpp : ILogger/IClock/IFileSystem 抽象与实现声明
+  |-- src/runtime/Services.cpp     : StdLogger/SteadyClock/LocalFS 实现
+  |-- include/runtime/EventBus.hpp : 事件总线（订阅/发布）
+  |-- include/runtime/ThreadPool.hpp : 线程池（任务调度）
+
+workflow
+  |-- include/workflow/ITask.hpp        : 任务抽象（id/run/元信息/取消等）
+  |-- include/workflow/ITaskContext.hpp : 任务上下文（Logger/Clock/FS + KV）
+  |-- include/workflow/Workflow.hpp     : WorkflowSpec（tasks/edges/vars）
+  |-- include/workflow/Executor.hpp     : 执行器接口与 SimpleContext
+  |-- src/workflow/Executor.cpp         : DAG 拓扑并行调度，事件发布
+  |-- include/workflow/WorkflowParser.hpp / src/workflow/WorkflowParser.cpp
+       - 从 workflow.json 解析任务与依赖（当前支持 ShellTask）
+  |-- include/workflow/Tasks.hpp        : ShellTask 定义（脚本 + 参数过滤器）
+
+app
+  |-- src/app/main.cpp : 组装服务 → 解析 workflow.json → 执行工作流
+
+plugins
+  |-- plugins/simple/*         : 实现 ISimple，导出 registerPlugin(PluginManager&)
+  |-- plugins/json_compare/*   : 实现 IComparator（JsonComparator）
+
+ui
+  |-- include/ui/console_ui.hpp / src/ui/console_ui.cpp : 简易终端进度与任务打印
+
+
+三、执行流程（ASCII 时序）
+----------------------------------------
+
+  app::main
+    |
+    | 1) 读取并解析 workflow.json
+    v
+  workflow::WorkflowParser ----------------------------------------------
+    |  产出 WorkflowSpec：tasks + edges + vars                           |
+    '--------------------------------------------------------------------'
+    |
+    | 2) 准备上下文与服务（StdLogger/SteadyClock/LocalFS）
+    v
+  workflow::Executor(run)
+    |
+    | 3) 构建 DAG（indegree/adjacency）
+    | 4) 将入度为 0 的任务入队，并行提交到 ThreadPool
+    v
+  workflow::ITask（例如 ShellTask）
+    |
+    | 5) 执行：
+    |    - 变量替换与参数过滤（abspath/normpath/join/...）
+    |    - 调用外部脚本（bash/cmd）
+    |    - 可选：写回上下文 out_key/out_value（并校验文件存在）
+    |
+    '-----> 发布事件到 EventBus：task_started / task_finished
+    |
+    | 6) 后继节点入度递减，为 0 则继续提交执行
+    v
+  完成：若所有任务成功，返回 true（或根据需要读取 final_key）
+
+
+四、关键接口与约定（摘要）
+----------------------------------------
+core::IObject                      | 插件对象基类（虚析构）
+core::ISimple                      | 示例接口（add）
+core::IComparator                  | JSON 比对接口（compareFiles）
+core::PluginManager                | registerClass/create/loadPlugin/unloadAll
+
+runtime::ILogger/StdLogger         | info/warn/error
+runtime::IClock/SteadyClock        | now()
+runtime::IFileSystem/LocalFS       | exists/join/dirname/basename/normalize/absolute/ensureDir/ensureParentDir
+runtime::EventBus                  | subscribe/publish
+runtime::ThreadPool                | submit/shutdown
+
+workflow::ITask                    | id()/run()/元信息/取消
+workflow::ITaskContext             | get/set + logger/clock/fs
+workflow::WorkflowSpec             | tasks/edges/vars/final_key
+workflow::Executor                 | run(spec, ctx)（并行拓扑）
+workflow::ShellTask                | 脚本任务（参数过滤、外部执行、输出校验）
+
+
+五、可选的插件加载路径（概览）
+----------------------------------------
+
+  app::main ----(loadPlugin)----> core::PluginManager ----(LoadLibrary/dlopen)----> 插件 DLL/SO
+                    |                                                           |
+                    '---- create(clsid/name) ----> std::shared_ptr<IObject> <---'
+
+
+六、扩展点
+----------------------------------------
+- 新增 ITask 类型：在 workflow::Tasks.hpp 中扩展，实现 run()/元信息
+- 新增过滤器：在 ShellTask 的 applyFilters 中添加规则
+- 新增插件接口：在 core 中定义新接口 + 通过 PluginManager 注册对应工厂
+- 可视化：依赖 EventBus 事件实现 UI 或日志侧的进度可视化
+

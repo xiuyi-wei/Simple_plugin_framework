@@ -1,0 +1,85 @@
+@startuml
+title Simple Plugin Framework – Architecture (Current)
+
+package core {
+  interface IObject
+  interface ISimple
+  interface IComparator
+  class PluginManager
+}
+
+package runtime {
+  interface ILogger
+  interface IClock
+  interface IFileSystem
+  class StdLogger
+  class SteadyClock
+  class LocalFS
+  class EventBus
+  class ThreadPool
+}
+
+package workflow {
+  class ITask
+  interface ITaskContext
+  class WorkflowSpec
+  class Executor
+  class WorkflowParser
+  class ShellTask
+}
+
+package ui {
+  class console_ui
+}
+
+package app {
+  class main
+}
+
+package plugins {
+  package simple {
+    class SimplePlugin
+    note right: exports registerPlugin(PluginManager&)
+  }
+  package json_compare {
+    class JsonComparator
+  }
+}
+
+' Core relationships
+app::main --> workflow::WorkflowParser : parse("workflow.json")
+app::main --> workflow::Executor : run(spec, ctx)
+app::main --> runtime::LocalFS : fs
+app::main --> runtime::StdLogger : logger
+app::main --> runtime::SteadyClock : clock
+
+workflow::Executor --> runtime::EventBus : publish events
+workflow::Executor --> runtime::ThreadPool : schedule tasks
+workflow::Executor ..> workflow::ITask : run()
+workflow::WorkflowParser ..> workflow::ShellTask : build tasks
+workflow::ShellTask --> runtime::IFileSystem : fs()
+workflow::ITaskContext --> runtime::ILogger : logger()
+workflow::ITaskContext --> runtime::IClock : clock()
+workflow::ITaskContext --> runtime::IFileSystem : fs()
+
+' Plugin mechanism
+app::main ..> core::PluginManager : (optional) load/create
+plugins::simple::SimplePlugin ..|> core::ISimple
+plugins::json_compare::JsonComparator ..|> core::IComparator
+plugins::simple::SimplePlugin ..> core::IObject
+plugins::json_compare::JsonComparator ..> core::IObject
+plugins::simple::SimplePlugin --> core::PluginManager : registerPlugin(..)
+core::PluginManager ..> core::IObject : factory registry
+
+note right of workflow::ShellTask
+  Runs external scripts (bash/cmd) with
+  resolved arguments and optional outputs.
+end note
+
+note bottom of runtime::LocalFS
+  Provides path ops (join, dirname, basename,
+  normalize, absolute) and directory creation.
+end note
+
+@enduml
+

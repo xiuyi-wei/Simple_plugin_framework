@@ -1,4 +1,4 @@
-# Install script for directory: G:/HKAVISION/Porject/Simple_plugin_framework/plugins/simple
+# Install script for directory: G:/HKAVISION/test/Simple_plugin_framework11111111/plugins/simple
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
