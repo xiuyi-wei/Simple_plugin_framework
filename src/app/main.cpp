@@ -135,7 +135,31 @@ int main()
             out << pluginOutput;
             std::cout << "[Main] Plugin output saved to " << desAbs << "\n";
         } else {
-            std::cerr << "[Main] Plugin processing failed\n";
+            std::cerr << "[Main] Plugin find() failed\n";
+        }
+
+        // Demo for the "add" process method: wrap key1/key2 under key11/key12.
+        std::string addOutput;
+        const std::string addKeywords = "key11/key12|key1/key2";
+        const std::string addOutputPath = "output_add.json";
+        bool addOk = jsonProcess->processJsonFiles(
+            srcContent,
+            addOutput,
+            addKeywords,
+            "add");
+        if (addOk) {
+            auto addAbs = std::filesystem::weakly_canonical(addOutputPath).string();
+            std::ofstream addOut(addAbs);
+            if (!addOut) {
+                std::cerr << "[Main] Failed to open " << addAbs << " for writing\n";
+                return -1;
+            }
+            addOut << addOutput;
+            std::cout << "[Main] Add demo finished, output saved to " << addAbs
+                      << " for keywords " << addKeywords << "\n";
+        } else {
+            std::cerr << "[Main] Plugin add() failed for keywords "
+                      << addKeywords << "\n";
         }
     } else {
         std::cerr << "Failed to create JsonProcess instance." << std::endl;
