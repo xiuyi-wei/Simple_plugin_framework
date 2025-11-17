@@ -150,6 +150,50 @@ static void dump_compare(const json& L, const json& R, std::ostream& os, int pad
     }
 }
 
+static std::string htmlEscape(const std::string& text) {
+    std::string out;
+    out.reserve(text.size());
+    for (char ch : text) {
+        switch (ch) {
+            case '&': out += "&amp;"; break;
+            case '<': out += "&lt;"; break;
+            case '>': out += "&gt;"; break;
+            case '"': out += "&quot;"; break;
+            default:  out.push_back(ch); break;
+        }
+    }
+    return out;
+}
+
+static std::string makeHtmlReport(const std::string& plain,
+                                  const std::string& oursPath,
+                                  const std::string& goldenPath) {
+    std::ostringstream html;
+    html << "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n"
+         << "<meta charset=\"utf-8\" />\n"
+         << "<title>JSON Compare Report</title>\n"
+         << "<style>\n"
+         << "body{font-family:Consolas,Menlo,monospace;background:#f5f5f7;margin:0;padding:24px;}\n"
+         << "h1{font-size:20px;margin-bottom:8px;}\n"
+         << ".meta{margin-bottom:16px;color:#333;font-size:14px;}\n"
+         << ".legend span{display:inline-block;margin-right:16px;}\n"
+         << ".legend .ok{color:#118011;}\n"
+         << ".legend .diff{color:#b84a00;}\n"
+         << ".legend .err{color:#c70024;}\n"
+         << "pre{background:#fff;border:1px solid #d0d0d5;border-radius:6px;padding:16px;"
+         << "overflow:auto;line-height:1.4;font-size:13px;white-space:pre-wrap;}\n"
+         << "</style>\n</head>\n<body>\n";
+    html << "<h1>JSON 对比报告</h1>\n";
+    html << "<div class=\"meta\"><div><strong>OURS:</strong> " << oursPath << "</div>\n";
+    html << "<div><strong>GOLDEN:</strong> " << goldenPath << "</div></div>\n";
+    html << "<div class=\"legend\"><span class=\"ok\">√ 相同</span>"
+         << "<span class=\"diff\">× 值不同</span>"
+         << "<span class=\"err\">E 结构/缺失</span></div>\n";
+    html << "<pre>" << htmlEscape(plain) << "</pre>\n";
+    html << "</body>\n</html>\n";
+    return html.str();
+}
+
 } // anonymous namespace
 
 namespace core {
@@ -180,11 +224,14 @@ public:
             return false;
         }
 
-        ofs << "对照报告（左=ours，右=golden；对象按插入顺序，叶子尾注 √/×/E）\n";
-        ofs << "说明：√=相同，×=同类型值不同，E=结构/类型/缺失错误\n\n";
-        dump_compare(L, R, ofs, 0);
-
-        return true;
+		std::ostringstream plain;
+		plain << "对照报告（左=ours，右=golden；对象按插入顺序，叶子尾�?�?×/E）\n";
+		plain << "说明：√=相同，�?同类型值不同，E=结构/类型/缺失错误\n\n";
+		dump_compare(L, R, plain, 0);
+
+		ofs << makeHtmlReport(plain.str(), oursPath, goldenPath);
+
+		return true;
     }
 };
 

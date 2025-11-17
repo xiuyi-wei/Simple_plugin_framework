@@ -1,4 +1,4 @@
-# Install script for directory: G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare
+# Install script for directory: G:/HKAVISION/test/Simple_plugin_framework11111111/plugins/json_compare
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "G:/HKAVISION/Porject/Simple_plugin_framework/plugins/json_compare/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "G:/HKAVISION/test/Simple_plugin_framework11111111/plugins/json_compare/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

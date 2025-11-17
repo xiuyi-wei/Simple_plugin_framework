@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>JSON Compare Report</title>
+<style>
+body{font-family:Consolas,Menlo,monospace;background:#f5f5f7;margin:0;padding:24px;}
+h1{font-size:20px;margin-bottom:8px;}
+.meta{margin-bottom:16px;color:#333;font-size:14px;}
+.legend span{display:inline-block;margin-right:16px;}
+.legend .ok{color:#118011;}
+.legend .diff{color:#b84a00;}
+.legend .err{color:#c70024;}
+pre{background:#fff;border:1px solid #d0d0d5;border-radius:6px;padding:16px;overflow:auto;line-height:1.4;font-size:13px;white-space:pre-wrap;}
+</style>
+</head>
+<body>
+<h1>JSON 对比报告</h1>
+<div class="meta"><div><strong>OURS:</strong> G:\HKAVISION\test\Simple_plugin_framework11111111\input.json</div>
+<div><strong>GOLDEN:</strong> G:\HKAVISION\test\Simple_plugin_framework11111111\file2.json</div></div>
+<div class="legend"><span class="ok">√ 相同</span><span class="diff">× 值不同</span><span class="err">E 结构/缺失</span></div>
+<pre>对照报告（左=ours，右=golden；对象按插入顺序，叶子尾�?�?×/E）
+说明：√=相同，�?同类型值不同，E=结构/类型/缺失错误
+
+{
+  &quot;key1&quot;: {&quot;key2&quot;:&quot;VALUE-A&quot;,&quot;x&quot;:1} // golden: &lt;missing&gt; E
+  &quot;other&quot;: {&quot;key1&quot;:{&quot;key2&quot;:{&quot;nested&quot;:&quot;VALUE-B&quot;}}} // golden: &lt;missing&gt; E
+  &quot;arr&quot;: [{&quot;key1&quot;:{&quot;key2&quot;:100}},{&quot;a&quot;:1},{&quot;key1&quot;:{&quot;key2&quot;:[&quot;VALUE-C1&quot;,&quot;VALUE-C2&quot;]}}] // golden: &lt;missing&gt; E
+  &quot;deep&quot;: {&quot;level1&quot;:{&quot;level2&quot;:{&quot;key1&quot;:{&quot;key2&quot;:{&quot;xx&quot;:999}}}}} // golden: &lt;missing&gt; E
+  &quot;workflow&quot;: &lt;missing&gt; // golden: {&quot;name&quot;:&quot;Engine System Monitor Pipeline&quot;,&quot;version&quot;:&quot;1.0.0&quot;,&quot;description&quot;:&quot;&quot;} E
+  &quot;system_resource_monitor&quot;: &lt;missing&gt; // golden: {&quot;description&quot;:&quot;系统资源监控模块，实时采集 CPU、内存、显存、帧率等指标&quot;,&quot;inputs&quot;:{&quot;target_process&quot;:&quot;1&quot;,&quot;interval_sec&quot;:1,&quot;duration_sec&quot;:300},&quot;metrics&quot;:[{&quot;name&quot;:&quot;2&quot;,&quot;valid&quot;:true,&quot;description&quot;:&quot;3 CPU 利用率 (%)&quot;,&quot;scripts&quot;:&quot;monitor_cpu_usage.sh&quot;,&quot;outputs&quot;:&quot;./data/performance/cpu_usage.csv&quot;},{&quot;name&quot;:&quot;memory_usage_kb&quot;,&quot;valid&quot;:true,&quot;description&quot;:&quot;引擎进程占用的系统内存 (KB)&quot;,&quot;scripts&quot;:&quot;monitor_memory_usage.sh&quot;,&quot;outputs&quot;:&quot;./data/performance/mem_usage.csv&quot;},{&quot;name&quot;:&quot;4&quot;,&quot;valid&quot;:false,&quot;description&quot;:&quot;显存占用 (KB)，若系统无 GPU 可关闭&quot;,&quot;scripts&quot;:&quot;monitor_gpu_memory.sh&quot;,&quot;outputs&quot;:&quot;./data/performance/gpu_mem_usage.csv&quot;},{&quot;name&quot;:&quot;fps&quot;,&quot;valid&quot;:false,&quot;description&quot;:&quot;引擎实时帧率 (frames per second)&quot;,&quot;scripts&quot;:&quot;monitor_fps.sh&quot;,&quot;outputs&quot;:&quot;./data/performance/fps.csv&quot;}],&quot;outputs&quot;:{&quot;csv_file&quot;:&quot;./data/performance/*.csv&quot;,&quot;plot_file&quot;:&quot;./data/performance/*.png&quot;}} E
+  &quot;report&quot;: &lt;missing&gt; // golden: {&quot;combine_script&quot;:&quot;&quot;,&quot;final_archive&quot;:&quot;&quot;} E
+}
+</pre>
+</body>
+</html>

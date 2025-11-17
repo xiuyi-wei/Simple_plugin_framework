@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\JsonComparator.cpp">
+    <ClCompile Include="G:\HKAVISION\test\Simple_plugin_framework11111111\plugins\json_compare\JsonComparator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="G:\HKAVISION\Porject\Simple_plugin_framework\plugins\json_compare\CMakeLists.txt" />
+    <CustomBuild Include="G:\HKAVISION\test\Simple_plugin_framework11111111\plugins\json_compare\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{210F2721-3865-342E-9672-4264237DAE52}</UniqueIdentifier>
+      <UniqueIdentifier>{740BD051-98FD-34C1-BE5B-A8156A620458}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

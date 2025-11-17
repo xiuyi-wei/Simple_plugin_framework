@@ -97,6 +97,7 @@ int main()
     // std::cout << "Working dir = " << std::filesystem::current_path() << "\n";
      // 加载插件
     core::PluginManager::instance().loadPlugin("plugins/json_process.dll");
+    core::PluginManager::instance().loadPlugin("plugins/json_compare.dll");
 
     // 测试下JsonProcess插件
     auto jsonProcess = core::PluginManager::instance()
@@ -163,6 +164,28 @@ int main()
         }
     } else {
         std::cerr << "Failed to create JsonProcess instance." << std::endl;
+    }
+
+    // Demo: use json_compare plugin to generate an HTML diff report.
+    auto comparator = core::PluginManager::instance()
+        .createTyped<IComparator>("default_json_compare");
+    if (comparator) {
+        const std::string oursPath = "input.json";
+        const std::string goldenPath = "file2.json";
+        const std::string reportPath = "compare_report.html";
+        auto oursAbs = std::filesystem::weakly_canonical(oursPath).string();
+        auto goldenAbs = std::filesystem::weakly_canonical(goldenPath).string();
+        auto reportAbs = std::filesystem::weakly_canonical(reportPath).string();
+        std::cout << "[Main] Run comparator: " << oursAbs << " vs "
+                  << goldenAbs << " -> " << reportAbs << "\n";
+        if (comparator->compareFiles(oursAbs, goldenAbs, reportAbs)) {
+            std::cout << "[Main] Comparator report generated: "
+                      << reportAbs << "\n";
+        } else {
+            std::cerr << "[Main] Comparator report failed\n";
+        }
+    } else {
+        std::cerr << "Failed to create JsonComparator instance." << std::endl;
     }
         
     return 0;

@@ -26,7 +26,7 @@ events:
       用于 .NET Framework 的 Microsoft (R) 生成引擎版本 16.11.2+f32259642
       版权所有(C) Microsoft Corporation。保留所有权利。
       
-      生成启动时间为 2025/11/17 23:23:43。
+      生成启动时间为 2025/11/18 0:09:15。
       节点 1 上的项目“G:\\HKAVISION\\test\\Simple_plugin_framework11111111\\build\\CMakeFiles\\3.29.0-rc4\\CompilerIdCXX\\CompilerIdCXX.vcxproj”(默认目标)。
       PrepareForBuild:
         正在创建目录“Debug\\”。
@@ -52,7 +52,7 @@ events:
           0 个警告
           0 个错误
       
-      已用时间 00:00:00.66
+      已用时间 00:00:00.62
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -71,8 +71,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "G:/HKAVISION/test/Simple_plugin_framework11111111/build/CMakeFiles/CMakeScratch/TryCompile-amktrm"
-      binary: "G:/HKAVISION/test/Simple_plugin_framework11111111/build/CMakeFiles/CMakeScratch/TryCompile-amktrm"
+      source: "G:/HKAVISION/test/Simple_plugin_framework11111111/build/CMakeFiles/CMakeScratch/TryCompile-61cg9d"
+      binary: "G:/HKAVISION/test/Simple_plugin_framework11111111/build/CMakeFiles/CMakeScratch/TryCompile-61cg9d"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -81,39 +81,39 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'G:/HKAVISION/test/Simple_plugin_framework11111111/build/CMakeFiles/CMakeScratch/TryCompile-amktrm'
+        Change Dir: 'G:/HKAVISION/test/Simple_plugin_framework11111111/build/CMakeFiles/CMakeScratch/TryCompile-61cg9d'
         
-        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/MSBuild/Current/Bin/MSBuild.exe" cmTC_deb75.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:n
+        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/MSBuild/Current/Bin/MSBuild.exe" cmTC_4a9fe.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:n
         用于 .NET Framework 的 Microsoft (R) 生成引擎版本 16.11.2+f32259642
         版权所有(C) Microsoft Corporation。保留所有权利。
         
-        生成启动时间为 2025/11/17 23:23:44。
-        节点 1 上的项目“G:\\HKAVISION\\test\\Simple_plugin_framework11111111\\build\\CMakeFiles\\CMakeScratch\\TryCompile-amktrm\\cmTC_deb75.vcxproj”(默认目标)。
+        生成启动时间为 2025/11/18 0:09:16。
+        节点 1 上的项目“G:\\HKAVISION\\test\\Simple_plugin_framework11111111\\build\\CMakeFiles\\CMakeScratch\\TryCompile-61cg9d\\cmTC_4a9fe.vcxproj”(默认目标)。
         PrepareForBuild:
-          正在创建目录“cmTC_deb75.dir\\Debug\\”。
-          正在创建目录“G:\\HKAVISION\\test\\Simple_plugin_framework11111111\\build\\CMakeFiles\\CMakeScratch\\TryCompile-amktrm\\Debug\\”。
-          正在创建目录“cmTC_deb75.dir\\Debug\\cmTC_deb75.tlog\\”。
+          正在创建目录“cmTC_4a9fe.dir\\Debug\\”。
+          正在创建目录“G:\\HKAVISION\\test\\Simple_plugin_framework11111111\\build\\CMakeFiles\\CMakeScratch\\TryCompile-61cg9d\\Debug\\”。
+          正在创建目录“cmTC_4a9fe.dir\\Debug\\cmTC_4a9fe.tlog\\”。
         InitializeBuildStatus:
-          正在创建“cmTC_deb75.dir\\Debug\\cmTC_deb75.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+          正在创建“cmTC_4a9fe.dir\\Debug\\cmTC_4a9fe.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
         ClCompile:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_deb75.dir\\Debug\\\\" /Fd"cmTC_deb75.dir\\Debug\\vc142.pdb" /external:W3 /Gd /TP /errorReport:queue "D:\\3D_Measure\\CMake\\share\\cmake-3.29\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_4a9fe.dir\\Debug\\\\" /Fd"cmTC_4a9fe.dir\\Debug\\vc142.pdb" /external:W3 /Gd /TP /errorReport:queue "D:\\3D_Measure\\CMake\\share\\cmake-3.29\\Modules\\CMakeCXXCompilerABI.cpp"
           用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.29.30159 版
           版权所有(C) Microsoft Corporation。保留所有权利。
           CMakeCXXCompilerABI.cpp
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_deb75.dir\\Debug\\\\" /Fd"cmTC_deb75.dir\\Debug\\vc142.pdb" /external:W3 /Gd /TP /errorReport:queue "D:\\3D_Measure\\CMake\\share\\cmake-3.29\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_4a9fe.dir\\Debug\\\\" /Fd"cmTC_4a9fe.dir\\Debug\\vc142.pdb" /external:W3 /Gd /TP /errorReport:queue "D:\\3D_Measure\\CMake\\share\\cmake-3.29\\Modules\\CMakeCXXCompilerABI.cpp"
         Link:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"G:\\HKAVISION\\test\\Simple_plugin_framework11111111\\build\\CMakeFiles\\CMakeScratch\\TryCompile-amktrm\\Debug\\cmTC_deb75.exe" /INCREMENTAL /ILK:"cmTC_deb75.dir\\Debug\\cmTC_deb75.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:/HKAVISION/test/Simple_plugin_framework11111111/build/CMakeFiles/CMakeScratch/TryCompile-amktrm/Debug/cmTC_deb75.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:/HKAVISION/test/Simple_plugin_framework11111111/build/CMakeFiles/CMakeScratch/TryCompile-amktrm/Debug/cmTC_deb75.lib" /MACHINE:X64  /machine:x64 cmTC_deb75.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_deb75.vcxproj -> G:\\HKAVISION\\test\\Simple_plugin_framework11111111\\build\\CMakeFiles\\CMakeScratch\\TryCompile-amktrm\\Debug\\cmTC_deb75.exe
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"G:\\HKAVISION\\test\\Simple_plugin_framework11111111\\build\\CMakeFiles\\CMakeScratch\\TryCompile-61cg9d\\Debug\\cmTC_4a9fe.exe" /INCREMENTAL /ILK:"cmTC_4a9fe.dir\\Debug\\cmTC_4a9fe.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:/HKAVISION/test/Simple_plugin_framework11111111/build/CMakeFiles/CMakeScratch/TryCompile-61cg9d/Debug/cmTC_4a9fe.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:/HKAVISION/test/Simple_plugin_framework11111111/build/CMakeFiles/CMakeScratch/TryCompile-61cg9d/Debug/cmTC_4a9fe.lib" /MACHINE:X64  /machine:x64 cmTC_4a9fe.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_4a9fe.vcxproj -> G:\\HKAVISION\\test\\Simple_plugin_framework11111111\\build\\CMakeFiles\\CMakeScratch\\TryCompile-61cg9d\\Debug\\cmTC_4a9fe.exe
         FinalizeBuildStatus:
-          正在删除文件“cmTC_deb75.dir\\Debug\\cmTC_deb75.tlog\\unsuccessfulbuild”。
-          正在对“cmTC_deb75.dir\\Debug\\cmTC_deb75.tlog\\cmTC_deb75.lastbuildstate”执行 Touch 任务。
-        已完成生成项目“G:\\HKAVISION\\test\\Simple_plugin_framework11111111\\build\\CMakeFiles\\CMakeScratch\\TryCompile-amktrm\\cmTC_deb75.vcxproj”(默认目标)的操作。
+          正在删除文件“cmTC_4a9fe.dir\\Debug\\cmTC_4a9fe.tlog\\unsuccessfulbuild”。
+          正在对“cmTC_4a9fe.dir\\Debug\\cmTC_4a9fe.tlog\\cmTC_4a9fe.lastbuildstate”执行 Touch 任务。
+        已完成生成项目“G:\\HKAVISION\\test\\Simple_plugin_framework11111111\\build\\CMakeFiles\\CMakeScratch\\TryCompile-61cg9d\\cmTC_4a9fe.vcxproj”(默认目标)的操作。
         
         已成功生成。
             0 个警告
             0 个错误
         
-        已用时间 00:00:00.47
+        已用时间 00:00:00.44
         
       exitCode: 0
   -
